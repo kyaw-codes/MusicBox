@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93425E9449F006227BA /* MKTabItemData.swift */; };
+		021DB93825E944BE006227BA /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93725E944BE006227BA /* MKTabBar.swift */; };
 		02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */; };
 		02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */; };
 		02B8293825E8BA61009D1AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293725E8BA61009D1AF7 /* Assets.xcassets */; };
@@ -14,7 +16,6 @@
 		02B8293E25E8BA61009D1AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293C25E8BA61009D1AF7 /* LaunchScreen.storyboard */; };
 		02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8294F25E8BD64009D1AF7 /* HomeVC.swift */; };
 		02B8295325E8BE2A009D1AF7 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8295225E8BE2A009D1AF7 /* UIColor+extension.swift */; };
-		02B8295D25E8C278009D1AF7 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8295C25E8C278009D1AF7 /* GradientView.swift */; };
 		02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */; };
 		02B8296425E8C7B1009D1AF7 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296325E8C7B1009D1AF7 /* SearchVC.swift */; };
 		02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		021DB93425E9449F006227BA /* MKTabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabItemData.swift; sourceTree = "<group>"; };
+		021DB93725E944BE006227BA /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		02B8292E25E8BA5F009D1AF7 /* MusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +36,6 @@
 		02B8293F25E8BA61009D1AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02B8294F25E8BD64009D1AF7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		02B8295225E8BE2A009D1AF7 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
-		02B8295C25E8C278009D1AF7 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBarController.swift; sourceTree = "<group>"; };
 		02B8296325E8C7B1009D1AF7 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVC.swift; sourceTree = "<group>"; };
@@ -99,7 +101,7 @@
 		02B8294925E8BD28009D1AF7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */,
+				02B8297125E94409009D1AF7 /* Tab bar */,
 				02B8294F25E8BD64009D1AF7 /* HomeVC.swift */,
 				02B8296325E8C7B1009D1AF7 /* SearchVC.swift */,
 				02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */,
@@ -112,7 +114,6 @@
 		02B8294A25E8BD2F009D1AF7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02B8295C25E8C278009D1AF7 /* GradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +142,16 @@
 				02B8293C25E8BA61009D1AF7 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		02B8297125E94409009D1AF7 /* Tab bar */ = {
+			isa = PBXGroup;
+			children = (
+				02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */,
+				021DB93425E9449F006227BA /* MKTabItemData.swift */,
+				021DB93725E944BE006227BA /* MKTabBar.swift */,
+			);
+			path = "Tab bar";
 			sourceTree = "<group>";
 		};
 		43C1D2C4EBB07A1D71D5CE03 /* Frameworks */ = {
@@ -276,10 +287,11 @@
 			files = (
 				02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */,
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,
+				021DB93825E944BE006227BA /* MKTabBar.swift in Sources */,
+				021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */,
 				02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */,
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
 				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,
-				02B8295D25E8C278009D1AF7 /* GradientView.swift in Sources */,
 				02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */,
 				02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */,
 				02B8295325E8BE2A009D1AF7 /* UIColor+extension.swift in Sources */,
