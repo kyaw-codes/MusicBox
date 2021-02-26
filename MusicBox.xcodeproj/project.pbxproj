@@ -13,6 +13,13 @@
 		02B8293B25E8BA61009D1AF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293A25E8BA61009D1AF7 /* Preview Assets.xcassets */; };
 		02B8293E25E8BA61009D1AF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293C25E8BA61009D1AF7 /* LaunchScreen.storyboard */; };
 		02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8294F25E8BD64009D1AF7 /* HomeVC.swift */; };
+		02B8295325E8BE2A009D1AF7 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8295225E8BE2A009D1AF7 /* UIColor+extension.swift */; };
+		02B8295D25E8C278009D1AF7 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8295C25E8C278009D1AF7 /* GradientView.swift */; };
+		02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */; };
+		02B8296425E8C7B1009D1AF7 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296325E8C7B1009D1AF7 /* SearchVC.swift */; };
+		02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */; };
+		02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */; };
+		02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */; };
 		A8CD53C47159998B9BA2EA6C /* Pods_MusicBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3518C0D0676DD59DDC5793 /* Pods_MusicBox.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +32,13 @@
 		02B8293D25E8BA61009D1AF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02B8293F25E8BA61009D1AF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02B8294F25E8BD64009D1AF7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		02B8295225E8BE2A009D1AF7 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		02B8295C25E8C278009D1AF7 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBarController.swift; sourceTree = "<group>"; };
+		02B8296325E8C7B1009D1AF7 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVC.swift; sourceTree = "<group>"; };
+		02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1E7E6214F3D705B70630745B /* Pods-MusicBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicBox.release.xcconfig"; path = "Target Support Files/Pods-MusicBox/Pods-MusicBox.release.xcconfig"; sourceTree = "<group>"; };
 		A7C58F27C55382FEF71BF315 /* Pods-MusicBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicBox.debug.xcconfig"; path = "Target Support Files/Pods-MusicBox/Pods-MusicBox.debug.xcconfig"; sourceTree = "<group>"; };
 		AF3518C0D0676DD59DDC5793 /* Pods_MusicBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,11 +77,11 @@
 		02B8293025E8BA5F009D1AF7 /* MusicBox */ = {
 			isa = PBXGroup;
 			children = (
-				02B8294D25E8BD3D009D1AF7 /* Resources */,
+				02B8294925E8BD28009D1AF7 /* View Controllers */,
+				02B8294A25E8BD2F009D1AF7 /* Views */,
 				02B8294C25E8BD38009D1AF7 /* Delegates */,
 				02B8294B25E8BD33009D1AF7 /* Helpers */,
-				02B8294A25E8BD2F009D1AF7 /* Views */,
-				02B8294925E8BD28009D1AF7 /* View Controllers */,
+				02B8294D25E8BD3D009D1AF7 /* Resources */,
 				02B8293F25E8BA61009D1AF7 /* Info.plist */,
 				02B8293925E8BA61009D1AF7 /* Preview Content */,
 			);
@@ -85,7 +99,12 @@
 		02B8294925E8BD28009D1AF7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				02B8295F25E8C5F7009D1AF7 /* MKTabBarController.swift */,
 				02B8294F25E8BD64009D1AF7 /* HomeVC.swift */,
+				02B8296325E8C7B1009D1AF7 /* SearchVC.swift */,
+				02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */,
+				02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */,
+				02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -93,6 +112,7 @@
 		02B8294A25E8BD2F009D1AF7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02B8295C25E8C278009D1AF7 /* GradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,6 +120,7 @@
 		02B8294B25E8BD33009D1AF7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				02B8295225E8BE2A009D1AF7 /* UIColor+extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -253,9 +274,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */,
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,
+				02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */,
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
+				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,
+				02B8295D25E8C278009D1AF7 /* GradientView.swift in Sources */,
 				02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */,
+				02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */,
+				02B8295325E8BE2A009D1AF7 /* UIColor+extension.swift in Sources */,
+				02B8296425E8C7B1009D1AF7 /* SearchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
