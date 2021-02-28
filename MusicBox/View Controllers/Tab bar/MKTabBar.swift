@@ -64,7 +64,7 @@ class MKTabBar: UIView {
         // Calculate the x offsets for each tab item
         calculateOffsetForEachTabItem(&xOffsets)
         
-        // Partition placeholder views for tab bar item to fit in equally
+        // Partition placeholder views for tab bar item to fit in
         partitionPlaceholderViews(&tabContentPlaceholderViews)
         
         // Build tab item view, add it to on of the placeholder views, laying out the tab item and finally add placeholders to the
