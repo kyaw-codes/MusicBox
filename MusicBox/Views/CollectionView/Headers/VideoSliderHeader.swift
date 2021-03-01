@@ -9,7 +9,14 @@ import UIKit
 
 class VideoSliderHeader: UICollectionReusableView, UICollectionViewDelegateFlowLayout {
     
-    private var titles = ["Top", "Following", "Recent", "Continue Watching", "Favourite", "Suggestion"]
+    private var sliderTitles: [VideoSliderTitleModel] = [
+        .init(title: "Top", isSelected: true),
+        .init(title: "Following", isSelected: false),
+        .init(title: "Continue Watching", isSelected: false),
+        .init(title: "Recent", isSelected: false),
+        .init(title: "Favourite", isSelected: false),
+        .init(title: "Suggestion", isSelected: false)
+    ]
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -20,13 +27,26 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDelegateFlowL
         return cv
     }()
     
-    private lazy var cellRegistration = UICollectionView.CellRegistration<HeaderCell, String> { [weak self] cell, indexPath, item in
+    private lazy var cellRegistration = UICollectionView.CellRegistration<HeaderCell, VideoSliderTitleModel> { [weak self] cell, indexPath, item in
         guard let strongSelf = self else { return }
-        cell.data = strongSelf.titles[indexPath.item]
+        cell.data = strongSelf.sliderTitles[indexPath.item]
+        
+        cell.onTap = { [weak self] model in
+            guard let strongSelf = self else { return }
+            strongSelf.sliderTitles.forEach { (titleModel) in
+                if titleModel.title == model.title {
+                    titleModel.isSelected = true
+                } else {
+                    titleModel.isSelected = false
+                }
+            }
+            strongSelf.applySnapshot()
+            strongSelf.collectionView.reloadData()
+        }
     }
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, String>?
-    private var snapShot: NSDiffableDataSourceSnapshot<Int, String>?
+    private var dataSource: UICollectionViewDiffableDataSource<Int, VideoSliderTitleModel>?
+    private var snapShot: NSDiffableDataSourceSnapshot<Int, VideoSliderTitleModel>?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,7 +55,7 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDelegateFlowL
         collectionView.delegate = self
         
         createDatasource()
-        applyDatasource()
+        applySnapshot()
     }
     
     override func layoutSubviews() {
@@ -54,11 +74,11 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDelegateFlowL
         })
     }
     
-    private func applyDatasource() {
+    private func applySnapshot() {
         guard let dataSource = dataSource else { return }
         snapShot = NSDiffableDataSourceSnapshot()
         snapShot?.appendSections([1])
-        snapShot?.appendItems(titles)
+        snapShot?.appendItems(sliderTitles)
         dataSource.apply(snapShot!)
     }
     
@@ -67,7 +87,7 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDelegateFlowL
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let title = titles[indexPath.row]
+        let title = sliderTitles[indexPath.item].title
         let textWidth = String(title).size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)]).width
         return CGSize(width: textWidth + 10, height: collectionView.frame.height)
     }
@@ -82,16 +102,20 @@ extension VideoSliderHeader {
     
     class HeaderCell: UICollectionViewCell {
         
-        var data: String? {
+        var onTap: ((VideoSliderTitleModel) -> Void) = {_ in}
+        
+        var data: VideoSliderTitleModel? {
             didSet {
                 guard let data = data else { return }
-                title.text = data
+                title.text = data.title
+                title.textColor = data.isSelected ? .white : .appAccent
+                bottomUnderlineView.isHidden = !data.isSelected
             }
         }
         
         private lazy var title: UILabel = {
             let lbl = UILabel()
-            lbl.font = UIFont.systemFont(ofSize: 16)
+            lbl.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
             lbl.textColor = .white
             lbl.textAlignment = .center
             return lbl
@@ -110,6 +134,12 @@ extension VideoSliderHeader {
             
             addSubview(title)
             addSubview(bottomUnderlineView)
+            
+            contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapEvent)))
+        }
+        
+        @objc func handleTapEvent() {
+            onTap(data!)
         }
         
         required init?(coder: NSCoder) {
