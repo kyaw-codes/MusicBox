@@ -12,6 +12,8 @@
 		021DB93F25E9FF68006227BA /* VideoSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93E25E9FF68006227BA /* VideoSliderCell.swift */; };
 		0279278E25EBEBD500A67B64 /* VideoSliderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279278D25EBEBD500A67B64 /* VideoSliderHeader.swift */; };
 		0279279325ED05BC00A67B64 /* VideoSliderTitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */; };
+		0279279825ED107800A67B64 /* VideoSliderHeader+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279279725ED107800A67B64 /* VideoSliderHeader+Cell.swift */; };
+		0279279B25ED10A300A67B64 /* VideoSliderHeader+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279279A25ED10A300A67B64 /* VideoSliderHeader+Delegate.swift */; };
 		02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */; };
 		02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */; };
 		02B8293825E8BA61009D1AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293725E8BA61009D1AF7 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		021DB93E25E9FF68006227BA /* VideoSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderCell.swift; sourceTree = "<group>"; };
 		0279278D25EBEBD500A67B64 /* VideoSliderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderHeader.swift; sourceTree = "<group>"; };
 		0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderTitleModel.swift; sourceTree = "<group>"; };
+		0279279725ED107800A67B64 /* VideoSliderHeader+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoSliderHeader+Cell.swift"; sourceTree = "<group>"; };
+		0279279A25ED10A300A67B64 /* VideoSliderHeader+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoSliderHeader+Delegate.swift"; sourceTree = "<group>"; };
 		02B8292E25E8BA5F009D1AF7 /* MusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +88,7 @@
 		0279278C25EBEBBB00A67B64 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				0279278D25EBEBD500A67B64 /* VideoSliderHeader.swift */,
+				0279279D25ED10ED00A67B64 /* VideoSliderHeader */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -95,6 +99,16 @@
 				0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0279279D25ED10ED00A67B64 /* VideoSliderHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0279278D25EBEBD500A67B64 /* VideoSliderHeader.swift */,
+				0279279725ED107800A67B64 /* VideoSliderHeader+Cell.swift */,
+				0279279A25ED10A300A67B64 /* VideoSliderHeader+Delegate.swift */,
+			);
+			path = VideoSliderHeader;
 			sourceTree = "<group>";
 		};
 		02B8292525E8BA5F009D1AF7 = {
@@ -330,9 +344,11 @@
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,
 				021DB93825E944BE006227BA /* MKTabBar.swift in Sources */,
 				021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */,
+				0279279825ED107800A67B64 /* VideoSliderHeader+Cell.swift in Sources */,
 				0279278E25EBEBD500A67B64 /* VideoSliderHeader.swift in Sources */,
 				021DB93F25E9FF68006227BA /* VideoSliderCell.swift in Sources */,
 				02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */,
+				0279279B25ED10A300A67B64 /* VideoSliderHeader+Delegate.swift in Sources */,
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
 				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,
 				02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */,

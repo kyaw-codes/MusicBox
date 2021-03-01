@@ -93,12 +93,16 @@ extension VideoSliderCell {
     
     class VideoCell: UICollectionViewCell {
         
+        // MARK: - Public Properties
+        
         var data: UIImage? {
             didSet {
                 guard let image = data else { return }
                 videoImageView.image = image
             }
         }
+        
+        // MARK: - Views
         
         private lazy var videoImageView: UIImageView = {
             let imageView = UIImageView()
@@ -116,12 +120,20 @@ extension VideoSliderCell {
             return button
         }()
         
+        // MARK: - Constructors
+        
         override init(frame: CGRect) {
             super.init(frame: frame)
             
             contentView.addSubview(videoImageView)
             contentView.addSubview(playButton)
         }
+        
+        required init?(coder: NSCoder) {
+            fatalError()
+        }
+        
+        // MARK: - Lifecycles
         
         override func layoutSubviews() {
             super.layoutSubviews()
@@ -133,8 +145,5 @@ extension VideoSliderCell {
             }
         }
         
-        required init?(coder: NSCoder) {
-            fatalError()
-        }
     }
 }

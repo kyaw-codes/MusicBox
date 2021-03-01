@@ -120,7 +120,7 @@ class HomeVC: UICollectionViewController {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             default:
-                return HomeVC.createVidesSliderSection()
+                return HomeVC.createVideosSliderSection()
             }
         }
         
@@ -129,7 +129,7 @@ class HomeVC: UICollectionViewController {
         return layout
     }
     
-    private static func createVidesSliderSection() -> NSCollectionLayoutSection {
+    private static func createVideosSliderSection() -> NSCollectionLayoutSection {
         let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
 
@@ -144,7 +144,7 @@ class HomeVC: UICollectionViewController {
         ]
         
         // The amount of space between the content of the section and its boundaries.
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 20, bottom: 0, trailing: 0)
         return section
     }
     
