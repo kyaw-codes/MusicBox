@@ -36,7 +36,7 @@ class VideoSliderCell: UICollectionViewCell, UICollectionViewDelegateFlowLayout 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-           
+        
         backgroundColor = .clear
         
         contentView.addSubview(collectionView)
@@ -84,66 +84,5 @@ class VideoSliderCell: UICollectionViewCell, UICollectionViewDelegateFlowLayout 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-    }
-}
-
-extension VideoSliderCell {
-    
-    // MARK: - ViewCell Class
-    
-    class VideoCell: UICollectionViewCell {
-        
-        // MARK: - Public Properties
-        
-        var data: UIImage? {
-            didSet {
-                guard let image = data else { return }
-                videoImageView.image = image
-            }
-        }
-        
-        // MARK: - Views
-        
-        private lazy var videoImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFill
-            imageView.layer.cornerRadius = 12
-            imageView.clipsToBounds = true
-            return imageView
-        }()
-        
-        private lazy var playButton: UIButton = {
-            let button = UIButton()
-            let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 48))
-            let playIcon = UIImage(systemName: "play.circle.fill", withConfiguration: config)?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.appAccent.withAlphaComponent(0.8))
-            button.setImage(playIcon, for: .normal)
-            return button
-        }()
-        
-        // MARK: - Constructors
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            
-            contentView.addSubview(videoImageView)
-            contentView.addSubview(playButton)
-        }
-        
-        required init?(coder: NSCoder) {
-            fatalError()
-        }
-        
-        // MARK: - Lifecycles
-        
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            
-            videoImageView.frame = bounds
-            playButton.snp.makeConstraints { (make) in
-                make.width.height.equalTo(48)
-                make.centerX.centerY.equalToSuperview()
-            }
-        }
-        
     }
 }

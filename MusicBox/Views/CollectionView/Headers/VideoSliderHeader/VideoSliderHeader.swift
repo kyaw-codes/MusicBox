@@ -51,7 +51,7 @@ class VideoSliderHeader: UICollectionReusableView {
         }
     }
     
-    // MARK: - Private Properties
+    // MARK: - Private Properties(Datasource & Snapshot)
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, VideoSliderTitleModel>?
     private var snapShot: NSDiffableDataSourceSnapshot<Int, VideoSliderTitleModel>?
