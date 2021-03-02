@@ -25,8 +25,13 @@ class HomeVC: UICollectionViewController {
     
     // MARK: - Cell & Header Registrations
     
-    let videoSliderCellRegistration = UICollectionView.CellRegistration<VideoSliderCell, UIImage> { cell, indexPath, video in
+    lazy var videoSliderCellRegistration = UICollectionView.CellRegistration<VideoSliderCell, UIImage> { cell, indexPath, video in
         cell.video = video
+    }
+    
+    lazy var videoSliderHeaderRegistration = UICollectionView.SupplementaryRegistration<VideoSliderHeader>(elementKind: VideoSliderHeader.kind) { [weak self] (header, _, indexPath) in
+        guard let strongSelf = self else { return }
+        header.titles = strongSelf.titles
     }
 
     // MARK: Constructors
@@ -111,6 +116,9 @@ class HomeVC: UICollectionViewController {
         section.orthogonalScrollingBehavior = .groupPaging
         
         // Compose boundary item i.e header in this case
+        section.boundarySupplementaryItems = [
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), elementKind: VideoSliderHeader.kind, alignment: .top)
+        ]
 
         return section
     }
@@ -136,6 +144,14 @@ class HomeVC: UICollectionViewController {
             let video = sliderVideos[indexPath.item]
             let videoSliderCell = collectionView.dequeueConfiguredReusableCell(using: videoSliderCellRegistration, for: indexPath, item: video)
             return videoSliderCell
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch indexPath.section {
+        default:
+            // Return video slider header
+            return collectionView.dequeueConfiguredReusableSupplementary(using: videoSliderHeaderRegistration, for: indexPath)    
         }
     }
 
