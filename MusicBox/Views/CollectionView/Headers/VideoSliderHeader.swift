@@ -10,9 +10,13 @@ import SnapKit
 
 class VideoSliderHeader: UICollectionReusableView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var titles = [VideoSliderTitleModel]()
+    // MARK: - Properties
+    
+    private var titles = [VideoSliderTitleModel]()
     
     static let kind = "StoryCellKind"
+    
+    // MARK: - Cell Registration
     
     private lazy var headerCellRegistration = UICollectionView.CellRegistration<HeaderCell, VideoSliderTitleModel> { (cell, indexPath, item) in
         cell.title = item
@@ -42,6 +46,8 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDataSource, U
         view.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
         return view
     }()
+    
+    // MARK: - Constructors & Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,6 +81,8 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDataSource, U
         fatalError()
     }
     
+    // MARK: - Datasource & Delegate Methods
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -98,61 +106,75 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDataSource, U
     }
 }
 
-class HeaderCell: UICollectionViewCell {
+extension VideoSliderHeader {
+
+    // MARK: - Header Cell
     
-    var onTap: (VideoSliderTitleModel) -> Void = {_ in}
-    
-    var title: VideoSliderTitleModel? {
-        didSet {
-            guard let model = title else { return }
-            titleLabel.text = model.title
-            titleLabel.textColor = model.isSelected ? .white : .appAccent
-            bottomUnderlineView.isHidden = !model.isSelected
-        }
-    }
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private lazy var bottomUnderlineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .appRed
-        view.layer.cornerRadius = 4 / 2
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    class HeaderCell: UICollectionViewCell {
         
-        addSubview(titleLabel)
-        addSubview(bottomUnderlineView)
+        // MARK: - Properties
         
-        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-    }
-    
-    @objc func handleTap() {
-        onTap(title!)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        var onTap: (VideoSliderTitleModel) -> Void = {_ in}
         
-        titleLabel.snp.makeConstraints { (make) in
-            make.leading.top.trailing.equalToSuperview()
+        var title: VideoSliderTitleModel? {
+            didSet {
+                guard let model = title else { return }
+                titleLabel.text = model.title
+                titleLabel.textColor = model.isSelected ? .white : .appAccent
+                bottomUnderlineView.isHidden = !model.isSelected
+            }
         }
         
-        bottomUnderlineView.snp.makeConstraints { (make) in
-            make.leading.bottom.trailing.equalToSuperview()
-            make.height.equalTo(4)
+        // MARK: - Views
+        
+        private lazy var titleLabel: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+            label.textAlignment = .center
+            return label
+        }()
+        
+        private lazy var bottomUnderlineView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .appRed
+            view.layer.cornerRadius = 4 / 2
+            view.clipsToBounds = true
+            return view
+        }()
+        
+        // MARK: - Constructors & Lifecycles
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            
+            addSubview(titleLabel)
+            addSubview(bottomUnderlineView)
+            
+            contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
+        
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            titleLabel.snp.makeConstraints { (make) in
+                make.leading.top.trailing.equalToSuperview()
+            }
+            
+            bottomUnderlineView.snp.makeConstraints { (make) in
+                make.leading.bottom.trailing.equalToSuperview()
+                make.height.equalTo(4)
+            }
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError()
+        }
+
+        // MARK: - Handler Methods
+        
+        @objc func handleTap() {
+            onTap(title!)
+        }
+        
     }
 }

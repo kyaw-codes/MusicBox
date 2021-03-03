@@ -10,12 +10,16 @@ import SnapKit
 
 class VideoSliderCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var video: UIImage? {
         didSet {
             guard let image = video else { return }
             videoImageView.image = image
         }
     }
+    
+    // MARK: - Views
     
     private lazy var videoImageView: UIImageView = {
         let iv = UIImageView()
@@ -32,6 +36,8 @@ class VideoSliderCell: UICollectionViewCell {
         button.setImage(playIcon, for: .normal)
         return button
     }()
+    
+    // MARK: - Constructors & Lifecycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
