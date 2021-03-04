@@ -21,24 +21,45 @@ class HomeVC: UICollectionViewController {
         .init(title: "Favorite", isSelected: false)
     ]
     
-    private lazy var sliderVideos: [UIImage] = [#imageLiteral(resourceName: "pic_1"), #imageLiteral(resourceName: "pic_2"), #imageLiteral(resourceName: "pic_4"), #imageLiteral(resourceName: "pic_6")]
+    private lazy var sliderVideos: [UIImage] = [
+        UIImage(named: "pic_1")!,
+        UIImage(named: "pic_2")!,
+        UIImage(named: "pic_3")!,
+        UIImage(named: "pic_4")!
+    ]
     
+    private lazy var stories: [StoryModel] = [
+        .init(profile: UIImage(named: "pic_3")!, name: "me", isMyStory: true),
+        .init(profile: UIImage(named: "pic_4")!, name: "joansilve murad"),
+        .init(profile: UIImage(named: "pic_2")!, name: "sarsha"),
+    ]
+
     // MARK: - Cell & Header Registrations
     
     lazy var videoSliderCellRegistration = UICollectionView.CellRegistration<VideoSliderCell, UIImage> { cell, indexPath, video in
         cell.video = video
     }
     
-    lazy var videoSliderHeaderRegistration = UICollectionView.SupplementaryRegistration<VideoSliderHeader>(elementKind: VideoSliderHeader.kind) { [weak self] (header, _, indexPath) in
+    lazy var videoSliderHeaderRegistration = UICollectionView.SupplementaryRegistration<VideoSliderHeader>(elementKind: VideoSliderHeader.elementKind) { [weak self] (header, _, indexPath) in
         guard let strongSelf = self else { return }
         header.titles = strongSelf.titles
     }
+    
+    lazy var storyCellRegistration = UICollectionView.CellRegistration<StoryCell, StoryModel> { (cell, indexPath, model) in
+        cell.story = model
+    }
 
+    lazy var storyHeaderRegistration = UICollectionView.SupplementaryRegistration<StoryHeader>(elementKind: StoryHeader.elementKind) { _, _, _ in
+        // DO NOTHING
+    }
+    
     // MARK: Constructors
     
     init() {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnv) -> NSCollectionLayoutSection? in
             switch sectionIndex {
+            case 1:
+                return HomeVC.createStorySection()
             default:
                 return HomeVC.createVideoSliderSection()
             }
@@ -115,22 +136,46 @@ class HomeVC: UICollectionViewController {
         
         section.orthogonalScrollingBehavior = .groupPaging
         
-        // Compose boundary item i.e header in this case
+        // Compose boundary item i.e category header in this case
         section.boundarySupplementaryItems = [
-            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), elementKind: VideoSliderHeader.kind, alignment: .top)
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), elementKind: VideoSliderHeader.elementKind, alignment: .top)
         ]
 
+        return section
+    }
+    
+    private static func createStorySection() -> NSCollectionLayoutSection {
+        // Compose cell
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets.trailing = 20
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.22), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.orthogonalScrollingBehavior = .continuous
+        
+        // Compose boundary item i.e header in this case
+        section.boundarySupplementaryItems = [
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), elementKind: StoryHeader.elementKind, alignment: .topLeading)
+        ]
+        
         return section
     }
     
     // MARK: - Override Datasource Methods
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
+        case 1:
+            // Stories section
+            return stories.count
         default:
             // Return videos
             return sliderVideos.count
@@ -139,6 +184,11 @@ class HomeVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
+        case 1:
+            // Return story cell
+            let story = stories[indexPath.item]
+            let storyCell = collectionView.dequeueConfiguredReusableCell(using: storyCellRegistration, for: indexPath, item: story)
+            return storyCell
         default:
             // Return video slider cell
             let video = sliderVideos[indexPath.item]
@@ -149,6 +199,9 @@ class HomeVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch indexPath.section {
+        case 1:
+            // Return story header
+            return collectionView.dequeueConfiguredReusableSupplementary(using: storyHeaderRegistration, for: indexPath)
         default:
             // Return video slider header
             return collectionView.dequeueConfiguredReusableSupplementary(using: videoSliderHeaderRegistration, for: indexPath)    

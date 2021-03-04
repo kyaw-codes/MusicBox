@@ -44,4 +44,10 @@ extension UIColor {
             #colorLiteral(red: 0.07188268751, green: 0.0724151209, blue: 0.1337612569, alpha: 1)
         }
     }
+    
+    static var appGray: UIColor {
+        get {
+            #colorLiteral(red: 0.2661800086, green: 0.2668389678, blue: 0.3512129784, alpha: 1)
+        }
+    }
 }

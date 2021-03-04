@@ -12,9 +12,9 @@ class VideoSliderHeader: UICollectionReusableView, UICollectionViewDataSource, U
     
     // MARK: - Properties
     
-    private var titles = [VideoSliderTitleModel]()
+    var titles = [VideoSliderTitleModel]()
     
-    static let kind = "StoryCellKind"
+    static let elementKind = "StoryCellKind"
     
     // MARK: - Cell Registration
     
