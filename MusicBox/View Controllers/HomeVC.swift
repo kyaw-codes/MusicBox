@@ -33,6 +33,11 @@ class HomeVC: UICollectionViewController {
         .init(profile: UIImage(named: "pic_4")!, name: "joansilve murad"),
         .init(profile: UIImage(named: "pic_2")!, name: "sarsha"),
     ]
+    
+    private lazy var albums: [AlbumModel] = [
+        .init(coverImage: UIImage(named: "album_1")!, title: "This Title Can Take A Maximum Of Two Lines...", releaseYear: "2021", numberOfTracks: 12, commentCount: 4, likeCount: 27),
+        .init(coverImage: UIImage(named: "album_2")!, title: "This Title Is Short", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+    ]
 
     // MARK: - Cell & Header Registrations
     
@@ -53,6 +58,14 @@ class HomeVC: UICollectionViewController {
         // DO NOTHING
     }
     
+    lazy var albumCellRegistration = UICollectionView.CellRegistration<ForYouAlbumCell, AlbumModel> { (cell, indexPath, model) in
+        cell.album = model
+    }
+
+    lazy var albumHeaderRegistration = UICollectionView.SupplementaryRegistration<ForYouAlbumHeader>(elementKind: ForYouAlbumHeader.elementKind) { _, _, _ in
+        // DO NOTHING
+    }
+    
     // MARK: Constructors
     
     init() {
@@ -60,6 +73,8 @@ class HomeVC: UICollectionViewController {
             switch sectionIndex {
             case 1:
                 return HomeVC.createStorySection()
+            case 2:
+                return HomeVC.createAlbumSection()
             default:
                 return HomeVC.createVideoSliderSection()
             }
@@ -165,10 +180,30 @@ class HomeVC: UICollectionViewController {
         return section
     }
     
+    private static func createAlbumSection() -> NSCollectionLayoutSection {
+        // Compose cell
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 0)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
+        // Compose boundary item i.e album header in this case
+        section.boundarySupplementaryItems = [
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), elementKind: VideoSliderHeader.elementKind, alignment: .top)
+        ]
+
+        return section
+    }
+    
     // MARK: - Override Datasource Methods
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -176,6 +211,9 @@ class HomeVC: UICollectionViewController {
         case 1:
             // Stories section
             return stories.count
+        case 2:
+            // Albums section
+            return albums.count
         default:
             // Return videos
             return sliderVideos.count
@@ -189,6 +227,11 @@ class HomeVC: UICollectionViewController {
             let story = stories[indexPath.item]
             let storyCell = collectionView.dequeueConfiguredReusableCell(using: storyCellRegistration, for: indexPath, item: story)
             return storyCell
+        case 2:
+            // Return album cell
+            let album = albums[indexPath.item]
+            let albumCell = collectionView.dequeueConfiguredReusableCell(using: albumCellRegistration, for: indexPath, item: album)
+            return albumCell
         default:
             // Return video slider cell
             let video = sliderVideos[indexPath.item]
@@ -198,13 +241,21 @@ class HomeVC: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         switch indexPath.section {
+        case 0:
+            // Return video slider header
+            return collectionView.dequeueConfiguredReusableSupplementary(using: videoSliderHeaderRegistration, for: indexPath)
         case 1:
             // Return story header
             return collectionView.dequeueConfiguredReusableSupplementary(using: storyHeaderRegistration, for: indexPath)
+        case 2:
+        // Return album header
+            return collectionView.dequeueConfiguredReusableSupplementary(using: albumHeaderRegistration, for: indexPath)
         default:
-            // Return video slider header
-            return collectionView.dequeueConfiguredReusableSupplementary(using: videoSliderHeaderRegistration, for: indexPath)    
+            collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerDefault")
+            
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerDefault", for: indexPath)
         }
     }
 

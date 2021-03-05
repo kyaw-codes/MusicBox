@@ -27,6 +27,7 @@
 		02D6A26F25F1356E008E7417 /* StoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A26E25F1356E008E7417 /* StoryHeader.swift */; };
 		02D6A27225F13805008E7417 /* ForYouAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */; };
 		02D6A27525F1381C008E7417 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A27425F1381C008E7417 /* AlbumModel.swift */; };
+		02D6A27925F259E3008E7417 /* ForYouAlbumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A27825F259E3008E7417 /* ForYouAlbumHeader.swift */; };
 		02E19B6125EEAD5D00F15DE4 /* VideoSliderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E19B6025EEAD5D00F15DE4 /* VideoSliderHeader.swift */; };
 		02E19B6425EF4EEC00F15DE4 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E19B6325EF4EEC00F15DE4 /* StoryModel.swift */; };
 		A8CD53C47159998B9BA2EA6C /* Pods_MusicBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3518C0D0676DD59DDC5793 /* Pods_MusicBox.framework */; };
@@ -55,6 +56,7 @@
 		02D6A26E25F1356E008E7417 /* StoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryHeader.swift; sourceTree = "<group>"; };
 		02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouAlbumCell.swift; sourceTree = "<group>"; };
 		02D6A27425F1381C008E7417 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		02D6A27825F259E3008E7417 /* ForYouAlbumHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouAlbumHeader.swift; sourceTree = "<group>"; };
 		02E19B6025EEAD5D00F15DE4 /* VideoSliderHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderHeader.swift; sourceTree = "<group>"; };
 		02E19B6325EF4EEC00F15DE4 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		1E7E6214F3D705B70630745B /* Pods-MusicBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicBox.release.xcconfig"; path = "Target Support Files/Pods-MusicBox/Pods-MusicBox.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				02E19B6025EEAD5D00F15DE4 /* VideoSliderHeader.swift */,
 				02D6A26E25F1356E008E7417 /* StoryHeader.swift */,
+				02D6A27825F259E3008E7417 /* ForYouAlbumHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				021DB93825E944BE006227BA /* MKTabBar.swift in Sources */,
 				021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */,
 				027927AF25ED3F1E00A67B64 /* StoryCell.swift in Sources */,
+				02D6A27925F259E3008E7417 /* ForYouAlbumHeader.swift in Sources */,
 				02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */,
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
 				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,

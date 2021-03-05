@@ -8,18 +8,23 @@
 import SwiftUI
 import SnapKit
 
+
 class MKTabBarController: UITabBarController {
     
     private let tabItems: [MKTabItemData] = MKTabItemData.allCases
     private lazy var mkViewControllers: [UIViewController] = tabItems.map { $0.viewController }
-    private let tabBarHeigth = 80
+    var tabBarHeight = 80
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        object_setClass(tabBar, OverridedTabBar.self)
+        tabBar.isUserInteractionEnabled = false
+        tabBar.alpha = 0
+        
         let mkTabBar = MKTabBar(items: tabItems)
         viewControllers = mkViewControllers
-        tabBar.isHidden = true
+        
         
         mkTabBar.onTabItemTap = { [weak self] index in
             guard let strongSelf = self else { return }
@@ -29,9 +34,16 @@ class MKTabBarController: UITabBarController {
         view.addSubview(mkTabBar)
         mkTabBar.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(tabBarHeigth)
+            make.height.equalTo(tabBarHeight)
         }
 
+    }
+}
+
+private class OverridedTabBar: UITabBar {
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: frame.width, height: 80)
     }
 }
 
