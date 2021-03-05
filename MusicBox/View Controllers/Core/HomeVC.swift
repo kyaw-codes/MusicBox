@@ -60,6 +60,10 @@ class HomeVC: UICollectionViewController {
     
     lazy var albumCellRegistration = UICollectionView.CellRegistration<ForYouAlbumCell, AlbumModel> { (cell, indexPath, model) in
         cell.album = model
+        cell.onTap = { [weak self] album in
+            debugPrint(album.title)
+            self?.navigationController?.pushViewController(AlbumDetailVC(), animated: true)
+        }
     }
 
     lazy var albumHeaderRegistration = UICollectionView.SupplementaryRegistration<ForYouAlbumHeader>(elementKind: ForYouAlbumHeader.elementKind) { _, _, _ in

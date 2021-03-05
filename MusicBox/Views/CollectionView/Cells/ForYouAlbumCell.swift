@@ -10,6 +10,8 @@ import SnapKit
 
 class ForYouAlbumCell: UICollectionViewCell {
     
+    var onTap: ((AlbumModel) -> Void) = {_ in}
+    
     var album: AlbumModel? {
         didSet {
             // Bind with data
@@ -96,6 +98,8 @@ class ForYouAlbumCell: UICollectionViewCell {
         addSubview(likeButton)
         addSubview(commentCountLabel)
         addSubview(commentButton)
+        
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     }
     
     override func layoutSubviews() {
@@ -136,6 +140,11 @@ class ForYouAlbumCell: UICollectionViewCell {
             make.centerY.equalTo(likeCountLabel)
             make.trailing.equalTo(commentCountLabel.snp.leading).inset(-4)
         }
+    }
+    
+    @objc private func handleTap() {
+        guard let album = album else { return }
+        onTap(album)
     }
     
     required init?(coder: NSCoder) {
