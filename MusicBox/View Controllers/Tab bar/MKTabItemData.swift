@@ -57,7 +57,9 @@ enum MKTabItemData: CaseIterable {
             case .profile:
                 return ProfileVC()
             default:
-                return UINavigationController(rootViewController: HomeVC())
+                let homeVC = UINavigationController(rootViewController: HomeVC())
+                homeVC.navigationBar.prefersLargeTitles = true
+                return homeVC
             }
         }
     }

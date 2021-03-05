@@ -8,7 +8,6 @@
 import SwiftUI
 import SnapKit
 
-
 class MKTabBarController: UITabBarController {
     
     private let tabItems: [MKTabItemData] = MKTabItemData.allCases

@@ -98,7 +98,6 @@ class HomeVC: UICollectionViewController {
         super.viewDidLoad()
         
         configureCollectionView()
-
         configureNavigationBar()
     }
     
@@ -111,29 +110,28 @@ class HomeVC: UICollectionViewController {
     
     private func configureNavigationBar() {
         
-        guard let navbar = navigationController?.navigationBar else { return }
-        navbar.barTintColor = .appBackground
-        navbar.isTranslucent = false
+        title = "Home"
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
 
-        let navView = UIView()
-        
-        navigationItem.titleView = navView
-        
-        navView.frame = CGRect(x: 0, y: 0, width: navigationController!.navigationBar.frame.width - 40, height: navigationController!.navigationBar.frame.height)
-        
-        let homeLabel = UILabel()
-        homeLabel.text = "Home"
-        homeLabel.font = UIFont.boldSystemFont(ofSize: 34)
-        homeLabel.textColor = .white
+        navigationBarAppearance.backgroundColor = .appBackground
+
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        navigationController?.navigationBar.compactAppearance = navigationBarAppearance
         
         let iconConfig = UIImage.SymbolConfiguration(font: UIFont.boldSystemFont(ofSize: 22))
         let searchIcon = UIImage(systemName: "magnifyingglass", withConfiguration: iconConfig)?.withRenderingMode(.alwaysOriginal).withTintColor(.appAccent)
         let searchButton = UIButton()
         searchButton.setImage(searchIcon, for: .normal)
         
-        let stackView = UIStackView(arrangedSubviews: [homeLabel, UIView(), searchButton])
-        navView.addSubview(stackView)
-        stackView.frame = navView.bounds
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
     }
     
     private static func createVideoSliderSection() -> NSCollectionLayoutSection {
