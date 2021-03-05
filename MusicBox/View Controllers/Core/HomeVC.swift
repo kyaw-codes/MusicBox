@@ -71,9 +71,9 @@ class HomeVC: UICollectionViewController {
     init() {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnv) -> NSCollectionLayoutSection? in
             switch sectionIndex {
-            case 1:
+            case Section.stories.rawValue:
                 return HomeVC.createStorySection()
-            case 2:
+            case Section.album.rawValue:
                 return HomeVC.createAlbumSection()
             default:
                 return HomeVC.createVideoSliderSection()
@@ -206,10 +206,10 @@ class HomeVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 1:
+        case Section.stories.rawValue:
             // Stories section
             return stories.count
-        case 2:
+        case Section.album.rawValue:
             // Albums section
             return albums.count
         default:
@@ -220,12 +220,12 @@ class HomeVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case 1:
+        case Section.stories.rawValue:
             // Return story cell
             let story = stories[indexPath.item]
             let storyCell = collectionView.dequeueConfiguredReusableCell(using: storyCellRegistration, for: indexPath, item: story)
             return storyCell
-        case 2:
+        case Section.album.rawValue:
             // Return album cell
             let album = albums[indexPath.item]
             let albumCell = collectionView.dequeueConfiguredReusableCell(using: albumCellRegistration, for: indexPath, item: album)
@@ -241,13 +241,13 @@ class HomeVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch indexPath.section {
-        case 0:
+        case Section.videoSlider.rawValue:
             // Return video slider header
             return collectionView.dequeueConfiguredReusableSupplementary(using: videoSliderHeaderRegistration, for: indexPath)
-        case 1:
+        case Section.stories.rawValue:
             // Return story header
             return collectionView.dequeueConfiguredReusableSupplementary(using: storyHeaderRegistration, for: indexPath)
-        case 2:
+        case Section.album.rawValue:
         // Return album header
             return collectionView.dequeueConfiguredReusableSupplementary(using: albumHeaderRegistration, for: indexPath)
         default:
@@ -257,6 +257,14 @@ class HomeVC: UICollectionViewController {
         }
     }
 
+}
+
+extension HomeVC {
+    enum Section: Int {
+        case videoSlider = 0
+        case stories = 1
+        case album = 2
+    }
 }
 
 struct HomeVC_Preview: PreviewProvider {

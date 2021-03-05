@@ -159,12 +159,8 @@
 		02B8294925E8BD28009D1AF7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				02D6A27C25F2A933008E7417 /* Core */,
 				02B8297125E94409009D1AF7 /* Tab bar */,
-				02B8294F25E8BD64009D1AF7 /* HomeVC.swift */,
-				02B8296325E8C7B1009D1AF7 /* SearchVC.swift */,
-				02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */,
-				02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */,
-				02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -211,6 +207,18 @@
 				021DB93725E944BE006227BA /* MKTabBar.swift */,
 			);
 			path = "Tab bar";
+			sourceTree = "<group>";
+		};
+		02D6A27C25F2A933008E7417 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				02B8294F25E8BD64009D1AF7 /* HomeVC.swift */,
+				02B8296325E8C7B1009D1AF7 /* SearchVC.swift */,
+				02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */,
+				02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */,
+				02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		43C1D2C4EBB07A1D71D5CE03 /* Frameworks */ = {

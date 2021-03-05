@@ -56,7 +56,7 @@ class ForYouAlbumCell: UICollectionViewCell {
     // comment count label
     private lazy var commentCountLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 12)
+        lbl.font = .systemFont(ofSize: 14)
         lbl.textColor = .white
         return lbl
     }()
@@ -74,7 +74,7 @@ class ForYouAlbumCell: UICollectionViewCell {
     // like count lable
     private lazy var likeCountLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 12)
+        lbl.font = .systemFont(ofSize: 14)
         lbl.textColor = .white
         return lbl
     }()
