@@ -35,8 +35,8 @@ class HomeVC: UICollectionViewController {
     ]
     
     private lazy var albums: [AlbumModel] = [
-        .init(coverImage: UIImage(named: "album_1")!, title: "This Title Can Take A Maximum Of Two Lines...", releaseYear: "2021", numberOfTracks: 12, commentCount: 4, likeCount: 27),
-        .init(coverImage: UIImage(named: "album_2")!, title: "This Title Is Short", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+        .init(coverImage: UIImage(named: "album_1")!, title: "This Title Can Take A Maximum Of Two Lines...", artistName: "", artistBio: "Amanda Ava Koci, known professionally as Ava Max, is an American singer and songwriter. After moving across several states to pursue a music career during her childhood, Max signed with Atlantic Records in 2016, where she released the song \"Sweet but Psycho\" in August 2018.", releaseYear: "2021", numberOfTracks: 12, commentCount: 4, likeCount: 27),
+        .init(coverImage: UIImage(named: "album_2")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20)
     ]
 
     // MARK: - Cell & Header Registrations
@@ -61,8 +61,17 @@ class HomeVC: UICollectionViewController {
     lazy var albumCellRegistration = UICollectionView.CellRegistration<ForYouAlbumCell, AlbumModel> { (cell, indexPath, model) in
         cell.album = model
         cell.onTap = { [weak self] album in
-            debugPrint(album.title)
-            self?.navigationController?.pushViewController(AlbumDetailVC(), animated: true)
+
+            let albumDetailVC = AlbumDetailVC()
+
+            albumDetailVC.album = model
+            albumDetailVC.otherAlbums = [
+                .init(coverImage: UIImage(named: "album_2")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_3")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_4")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+            ]
+            
+            self?.present(albumDetailVC, animated: true, completion: nil)
         }
     }
 

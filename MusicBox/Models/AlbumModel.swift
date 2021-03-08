@@ -11,14 +11,18 @@ class AlbumModel {
     
     var coverImage: UIImage
     var title: String
+    var artistName: String
+    var artistBio: String
     var releaseYear: String
     var numberOfTracks: Int
     var commentCount: Int
     var likeCount: Int
     
-    init(coverImage: UIImage, title: String, releaseYear: String, numberOfTracks: Int, commentCount: Int, likeCount: Int) {
+    init(coverImage: UIImage, title: String, artistName: String, artistBio: String, releaseYear: String, numberOfTracks: Int, commentCount: Int, likeCount: Int) {
         self.coverImage = coverImage
         self.title = title
+        self.artistName = artistName
+        self.artistBio = artistBio
         self.releaseYear = releaseYear
         self.numberOfTracks = numberOfTracks
         self.commentCount = commentCount

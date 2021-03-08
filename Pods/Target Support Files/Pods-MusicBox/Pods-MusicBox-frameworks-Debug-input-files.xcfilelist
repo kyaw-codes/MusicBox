@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-MusicBox/Pods-MusicBox-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ExpandableLabel/ExpandableLabel.framework
+${BUILT_PRODUCTS_DIR}/ReadMoreTextView/ReadMoreTextView.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

@@ -7,4 +7,6 @@ target 'MusicBox' do
 
   # Pods for MusicBox
 pod 'SnapKit'
+pod 'ReadMoreTextView'
+pod "ExpandableLabel"
 end

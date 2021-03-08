@@ -11,7 +11,9 @@
 		021DB93825E944BE006227BA /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93725E944BE006227BA /* MKTabBar.swift */; };
 		0251CC0625F2AB4F00970D3E /* AlbumDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */; };
 		0251CC0925F2AB9B00970D3E /* VideoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0825F2AB9B00970D3E /* VideoDetailVC.swift */; };
+		0251CC0C25F2AEFC00970D3E /* ArtistBioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */; };
 		02575B7B25EE938100DA0AA0 /* VideoSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02575B7A25EE938100DA0AA0 /* VideoSliderCell.swift */; };
+		026701C425F4F9CC00C22A36 /* DeleteMeLaterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026701C325F4F9CC00C22A36 /* DeleteMeLaterVC.swift */; };
 		0279279325ED05BC00A67B64 /* VideoSliderTitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */; };
 		027927AF25ED3F1E00A67B64 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027927AE25ED3F1E00A67B64 /* StoryCell.swift */; };
 		02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */; };
@@ -40,7 +42,9 @@
 		021DB93725E944BE006227BA /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailVC.swift; sourceTree = "<group>"; };
 		0251CC0825F2AB9B00970D3E /* VideoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailVC.swift; sourceTree = "<group>"; };
+		0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistBioCell.swift; sourceTree = "<group>"; };
 		02575B7A25EE938100DA0AA0 /* VideoSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderCell.swift; sourceTree = "<group>"; };
+		026701C325F4F9CC00C22A36 /* DeleteMeLaterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMeLaterVC.swift; sourceTree = "<group>"; };
 		0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderTitleModel.swift; sourceTree = "<group>"; };
 		027927AE25ED3F1E00A67B64 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		02B8292E25E8BA5F009D1AF7 /* MusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +99,7 @@
 				02575B7A25EE938100DA0AA0 /* VideoSliderCell.swift */,
 				027927AE25ED3F1E00A67B64 /* StoryCell.swift */,
 				02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */,
+				0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				02B8297125E94409009D1AF7 /* Tab bar */,
 				0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */,
 				0251CC0825F2AB9B00970D3E /* VideoDetailVC.swift */,
+				026701C325F4F9CC00C22A36 /* DeleteMeLaterVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0251CC0C25F2AEFC00970D3E /* ArtistBioCell.swift in Sources */,
 				02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */,
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,
 				021DB93825E944BE006227BA /* MKTabBar.swift in Sources */,
@@ -371,6 +378,7 @@
 				02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */,
 				02D6A27525F1381C008E7417 /* AlbumModel.swift in Sources */,
 				02E19B6125EEAD5D00F15DE4 /* VideoSliderHeader.swift in Sources */,
+				026701C425F4F9CC00C22A36 /* DeleteMeLaterVC.swift in Sources */,
 				02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */,
 				02B8295325E8BE2A009D1AF7 /* UIColor+extension.swift in Sources */,
 				02B8296425E8C7B1009D1AF7 /* SearchVC.swift in Sources */,
