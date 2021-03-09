@@ -35,8 +35,8 @@ class HomeVC: UICollectionViewController {
     ]
     
     private lazy var albums: [AlbumModel] = [
-        .init(coverImage: UIImage(named: "album_1")!, title: "This Title Can Take A Maximum Of Two Lines...", artistName: "", artistBio: "Amanda Ava Koci, known professionally as Ava Max, is an American singer and songwriter. After moving across several states to pursue a music career during her childhood, Max signed with Atlantic Records in 2016, where she released the song \"Sweet but Psycho\" in August 2018.", releaseYear: "2021", numberOfTracks: 12, commentCount: 4, likeCount: 27),
-        .init(coverImage: UIImage(named: "album_2")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20)
+        .init(coverImage: UIImage(named: "album_1")!, artistImage: UIImage(named: "pic_1")!, title: "This Title Can Take A Maximum Of Two Lines...", artistName: "Ava Max", artistBio: "Amanda Ava Koci, known professionally as Ava Max, is an American singer and songwriter. After moving across several states to pursue a music career during her childhood, Max signed with Atlantic Records in 2016, where she released the song \"Sweet but Psycho\" in August 2018.", releaseYear: "2021", numberOfTracks: 12, commentCount: 4, likeCount: 27),
+        .init(coverImage: UIImage(named: "album_2")!, artistImage: UIImage(named: "pic_2")!, title: "This Title Is Short", artistName: "Lady Gaga", artistBio: "Stefani Joanne Angelina Germanotta, known professionally as Lady Gaga, is an American singer, songwriter, and actress. She is known for her image reinventions and musical versatility. Gaga began performing as a teenager, singing at open mic nights and acting in school plays.", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20)
     ]
 
     // MARK: - Cell & Header Registrations
@@ -66,9 +66,9 @@ class HomeVC: UICollectionViewController {
 
             albumDetailVC.album = model
             albumDetailVC.otherAlbums = [
-                .init(coverImage: UIImage(named: "album_2")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
-                .init(coverImage: UIImage(named: "album_3")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
-                .init(coverImage: UIImage(named: "album_4")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_2")!, artistImage: UIImage(named: "pic_3")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_3")!, artistImage: UIImage(named: "pic_4")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_4")!, artistImage: UIImage(named: "pic_5")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
             ]
             
             self?.present(albumDetailVC, animated: true, completion: nil)
@@ -110,6 +110,7 @@ class HomeVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.showsVerticalScrollIndicator = false
         configureCollectionView()
         configureNavigationBar()
     }

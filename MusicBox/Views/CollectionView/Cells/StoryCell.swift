@@ -51,6 +51,7 @@ class StoryCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         lbl.textColor = .appAccent
+        lbl.backgroundColor = .clear
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 4

@@ -20,6 +20,8 @@ class AlbumDetailVC: UICollectionViewController {
     init() {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
+            case Section.otherAlbums.rawValue:
+                return AlbumDetailVC.createOtherAlbumsSection()
             default:
                 return AlbumDetailVC.createArtistBioSection()
             }
@@ -33,8 +35,18 @@ class AlbumDetailVC: UICollectionViewController {
     
     // MARK: - Cell & Header Registrations
     
-    private let artistBioCellRegistration = UICollectionView.CellRegistration<ArtistBioCell, String> { (cell, indexPath, bio) in
-        cell.bioText = bio
+    private let artistBioCellRegistration = UICollectionView.CellRegistration<ArtistBioCell, AlbumModel> { (cell, indexPath, album) in
+        cell.bioText = album.artistBio
+    }
+    
+    private lazy var artistHeaderRegistration = UICollectionView.SupplementaryRegistration<ArtistPhotoHeader>(elementKind: ArtistPhotoHeader.elementKind) { [weak self] (header, _, indexPath) in
+        guard let strongSelf = self else { return }
+        header.artistImage = strongSelf.album?.artistImage
+        header.artistName = strongSelf.album?.artistName
+    }
+    
+    private let otherAlbumCellRegistration = UICollectionView.CellRegistration<OtherAlbumCell, AlbumModel> { (cell, indexPath, model) in
+        cell.album = model
     }
     
     // MARK: - Lifecycles
@@ -53,9 +65,33 @@ class AlbumDetailVC: UICollectionViewController {
                 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        // Create header
+        section.boundarySupplementaryItems = [
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.45)), elementKind: ArtistPhotoHeader.elementKind, alignment: .top)
+        ]
+    
+        return section
+    }
+    
+    private static func createOtherAlbumsSection() -> NSCollectionLayoutSection? {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+                
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
+        // Create header
+//        section.boundarySupplementaryItems = [
+//            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.45)), elementKind: ArtistPhotoHeader.elementKind, alignment: .top)
+//        ]
     
         return section
     }
@@ -67,22 +103,31 @@ class AlbumDetailVC: UICollectionViewController {
 extension AlbumDetailVC {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-//        if section == Section.artistBio.rawValue {
-//            return 1
-//        } else if section == Section.otherAlbums.rawValue {
-//            return otherAlbums?.count ?? 0
-//        } else {
-//            return 0
-//        }
+        if section == Section.artistBio.rawValue {
+            return 1
+        } else if section == Section.otherAlbums.rawValue {
+            return otherAlbums?.count ?? 0
+        } else {
+            return 0
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueConfiguredReusableCell(using: artistBioCellRegistration, for: indexPath, item: album?.artistBio)
+        switch indexPath.section {
+        case Section.otherAlbums.rawValue:
+            let album = otherAlbums?[indexPath.item]
+            return collectionView.dequeueConfiguredReusableCell(using: otherAlbumCellRegistration, for: indexPath, item: album)
+        default:
+            return collectionView.dequeueConfiguredReusableCell(using: artistBioCellRegistration, for: indexPath, item: album)
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueConfiguredReusableSupplementary(using: artistHeaderRegistration, for: indexPath)
     }
 }
 

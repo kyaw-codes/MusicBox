@@ -48,7 +48,8 @@ class ArtistBioCell: UICollectionViewCell {
         
         contentView.addSubview(dummyTextView)
         dummyTextView.snp.makeConstraints { (make) in
-            make.leading.trailing.top.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalToSuperview().inset(28)
         }
     }
 
