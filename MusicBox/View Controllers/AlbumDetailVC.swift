@@ -45,8 +45,12 @@ class AlbumDetailVC: UICollectionViewController {
         header.artistName = strongSelf.album?.artistName
     }
     
-    private let otherAlbumCellRegistration = UICollectionView.CellRegistration<OtherAlbumCell, AlbumModel> { (cell, indexPath, model) in
+    private let otherAlbumCellRegistration = UICollectionView.CellRegistration<album, AlbumModel> { (cell, indexPath, model) in
         cell.album = model
+    }
+    
+    private lazy var albumHeaderRegistration = UICollectionView.SupplementaryRegistration<AlbumHeader>(elementKind: AlbumHeader.elementKind) { (header, _, _) in
+        // NO ACTION
     }
     
     // MARK: - Lifecycles
@@ -89,9 +93,9 @@ class AlbumDetailVC: UICollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         
         // Create header
-//        section.boundarySupplementaryItems = [
-//            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.45)), elementKind: ArtistPhotoHeader.elementKind, alignment: .top)
-//        ]
+        section.boundarySupplementaryItems = [
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), elementKind: AlbumHeader.elementKind, alignment: .top)
+        ]
     
         return section
     }
@@ -127,7 +131,12 @@ extension AlbumDetailVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueConfiguredReusableSupplementary(using: artistHeaderRegistration, for: indexPath)
+        switch indexPath.section {
+        case Section.otherAlbums.rawValue:
+            return collectionView.dequeueConfiguredReusableSupplementary(using: albumHeaderRegistration, for: indexPath)
+        default:
+            return collectionView.dequeueConfiguredReusableSupplementary(using: artistHeaderRegistration, for: indexPath)
+        }
     }
 }
 

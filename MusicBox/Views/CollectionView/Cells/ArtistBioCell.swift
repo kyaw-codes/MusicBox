@@ -35,7 +35,7 @@ class ArtistBioCell: UICollectionViewCell {
     
     private lazy var dummyTextView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 20)
+        textView.font = UIFont.systemFont(ofSize: 18)
         textView.textColor = .white
         textView.backgroundColor = .clear
         textView.isScrollEnabled = false
@@ -49,7 +49,7 @@ class ArtistBioCell: UICollectionViewCell {
         contentView.addSubview(dummyTextView)
         dummyTextView.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(28)
+            make.top.equalToSuperview().inset(12)
         }
     }
 

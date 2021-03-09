@@ -5,25 +5,42 @@
 //  Created by Ko Kyaw on 26/02/2021.
 //
 
-import UIKit
+import SwiftUI
 
-class SearchVC: UIViewController {
-
+class SearchVC: UICollectionViewController {
+    
+    init() {
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemRed
+        title = "Search"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        collectionView.backgroundColor = .appBackground
+    }
+
+}
+
+struct SearchVC_Preview : PreviewProvider {
+    
+    static var previews: some View {
+        Container().edgesIgnoringSafeArea(.all)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    struct Container: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> some UIViewController {
+            return SearchVC()
+        }
+        
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+            // NO ACTION
+        }
     }
-    */
-
 }

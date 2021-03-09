@@ -49,7 +49,9 @@ enum MKTabItemData: CaseIterable {
         get {
             switch self {
             case .search:
-                return SearchVC()
+                let searchVC = UINavigationController(rootViewController: SearchVC())
+                searchVC.navigationBar.prefersLargeTitles = true
+                return searchVC
             case .addNew:
                 return AddNewVC()
             case .notification:
