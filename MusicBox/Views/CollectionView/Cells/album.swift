@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class OtherAlbumCell: UICollectionViewCell {
+class album: UICollectionViewCell {
     
     var album: AlbumModel? {
         didSet {
