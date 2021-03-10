@@ -17,9 +17,10 @@
 		0279279325ED05BC00A67B64 /* VideoSliderTitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */; };
 		027927AF25ED3F1E00A67B64 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027927AE25ED3F1E00A67B64 /* StoryCell.swift */; };
 		0288BAD825F646A400D0EB9C /* ArtistPhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAD725F646A400D0EB9C /* ArtistPhotoHeader.swift */; };
-		0288BAEE25F797B700D0EB9C /* album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAED25F797B700D0EB9C /* album.swift */; };
+		0288BAEE25F797B700D0EB9C /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAED25F797B700D0EB9C /* AlbumCell.swift */; };
 		0288BAF125F7F3C400D0EB9C /* AlbumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAF025F7F3C300D0EB9C /* AlbumHeader.swift */; };
 		0288BAF525F7F87500D0EB9C /* WatchedVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAF425F7F87500D0EB9C /* WatchedVideoModel.swift */; };
+		0288BAFA25F8825D00D0EB9C /* ContinueWatchingVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAF925F8825D00D0EB9C /* ContinueWatchingVideoCell.swift */; };
 		02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */; };
 		02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */; };
 		02B8293825E8BA61009D1AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293725E8BA61009D1AF7 /* Assets.xcassets */; };
@@ -52,9 +53,10 @@
 		0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderTitleModel.swift; sourceTree = "<group>"; };
 		027927AE25ED3F1E00A67B64 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		0288BAD725F646A400D0EB9C /* ArtistPhotoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPhotoHeader.swift; sourceTree = "<group>"; };
-		0288BAED25F797B700D0EB9C /* album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = album.swift; sourceTree = "<group>"; };
+		0288BAED25F797B700D0EB9C /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		0288BAF025F7F3C300D0EB9C /* AlbumHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumHeader.swift; sourceTree = "<group>"; };
 		0288BAF425F7F87500D0EB9C /* WatchedVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedVideoModel.swift; sourceTree = "<group>"; };
+		0288BAF925F8825D00D0EB9C /* ContinueWatchingVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueWatchingVideoCell.swift; sourceTree = "<group>"; };
 		02B8292E25E8BA5F009D1AF7 /* MusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +110,8 @@
 				027927AE25ED3F1E00A67B64 /* StoryCell.swift */,
 				02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */,
 				0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */,
-				0288BAED25F797B700D0EB9C /* album.swift */,
+				0288BAED25F797B700D0EB9C /* AlbumCell.swift */,
+				0288BAF925F8825D00D0EB9C /* ContinueWatchingVideoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -378,7 +381,7 @@
 			files = (
 				0251CC0C25F2AEFC00970D3E /* ArtistBioCell.swift in Sources */,
 				02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */,
-				0288BAEE25F797B700D0EB9C /* album.swift in Sources */,
+				0288BAEE25F797B700D0EB9C /* AlbumCell.swift in Sources */,
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,
 				021DB93825E944BE006227BA /* MKTabBar.swift in Sources */,
 				021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */,
@@ -387,6 +390,7 @@
 				02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */,
 				0288BAF525F7F87500D0EB9C /* WatchedVideoModel.swift in Sources */,
 				0251CC0925F2AB9B00970D3E /* VideoDetailVC.swift in Sources */,
+				0288BAFA25F8825D00D0EB9C /* ContinueWatchingVideoCell.swift in Sources */,
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
 				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,
 				0288BAF125F7F3C400D0EB9C /* AlbumHeader.swift in Sources */,

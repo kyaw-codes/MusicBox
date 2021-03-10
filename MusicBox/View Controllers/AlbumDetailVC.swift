@@ -45,7 +45,7 @@ class AlbumDetailVC: UICollectionViewController {
         header.artistName = strongSelf.album?.artistName
     }
     
-    private let otherAlbumCellRegistration = UICollectionView.CellRegistration<album, AlbumModel> { (cell, indexPath, model) in
+    private let otherAlbumCellRegistration = UICollectionView.CellRegistration<AlbumCell, AlbumModel> { (cell, indexPath, model) in
         cell.album = model
     }
     
