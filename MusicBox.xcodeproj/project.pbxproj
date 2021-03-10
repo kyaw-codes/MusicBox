@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0213EC6825F884E90070AAFF /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213EC6725F884E90070AAFF /* SearchBarCell.swift */; };
+		0213EC6D25F8DE2B0070AAFF /* ContinueWatchingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213EC6C25F8DE2B0070AAFF /* ContinueWatchingHeader.swift */; };
 		021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93425E9449F006227BA /* MKTabItemData.swift */; };
 		021DB93825E944BE006227BA /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93725E944BE006227BA /* MKTabBar.swift */; };
 		0251CC0625F2AB4F00970D3E /* AlbumDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		0213EC6725F884E90070AAFF /* SearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
+		0213EC6C25F8DE2B0070AAFF /* ContinueWatchingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueWatchingHeader.swift; sourceTree = "<group>"; };
 		021DB93425E9449F006227BA /* MKTabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabItemData.swift; sourceTree = "<group>"; };
 		021DB93725E944BE006227BA /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailVC.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				02D6A27825F259E3008E7417 /* ForYouAlbumHeader.swift */,
 				0288BAD725F646A400D0EB9C /* ArtistPhotoHeader.swift */,
 				0288BAF025F7F3C300D0EB9C /* AlbumHeader.swift */,
+				0213EC6C25F8DE2B0070AAFF /* ContinueWatchingHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				0288BAEE25F797B700D0EB9C /* AlbumCell.swift in Sources */,
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,
 				021DB93825E944BE006227BA /* MKTabBar.swift in Sources */,
+				0213EC6D25F8DE2B0070AAFF /* ContinueWatchingHeader.swift in Sources */,
 				021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */,
 				027927AF25ED3F1E00A67B64 /* StoryCell.swift in Sources */,
 				02D6A27925F259E3008E7417 /* ForYouAlbumHeader.swift in Sources */,
