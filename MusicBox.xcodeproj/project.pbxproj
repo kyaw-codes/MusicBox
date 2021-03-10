@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0213EC6825F884E90070AAFF /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213EC6725F884E90070AAFF /* SearchBarCell.swift */; };
 		021DB93525E9449F006227BA /* MKTabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93425E9449F006227BA /* MKTabItemData.swift */; };
 		021DB93825E944BE006227BA /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021DB93725E944BE006227BA /* MKTabBar.swift */; };
 		0251CC0625F2AB4F00970D3E /* AlbumDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0213EC6725F884E90070AAFF /* SearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
 		021DB93425E9449F006227BA /* MKTabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabItemData.swift; sourceTree = "<group>"; };
 		021DB93725E944BE006227BA /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailVC.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */,
 				0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */,
 				0288BAED25F797B700D0EB9C /* AlbumCell.swift */,
+				0213EC6725F884E90070AAFF /* SearchBarCell.swift */,
 				0288BAF925F8825D00D0EB9C /* ContinueWatchingVideoCell.swift */,
 			);
 			path = Cells;
@@ -380,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0251CC0C25F2AEFC00970D3E /* ArtistBioCell.swift in Sources */,
+				0213EC6825F884E90070AAFF /* SearchBarCell.swift in Sources */,
 				02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */,
 				0288BAEE25F797B700D0EB9C /* AlbumCell.swift in Sources */,
 				02B8295025E8BD64009D1AF7 /* HomeVC.swift in Sources */,

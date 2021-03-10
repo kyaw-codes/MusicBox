@@ -50,4 +50,10 @@ extension UIColor {
             #colorLiteral(red: 0.2661800086, green: 0.2668389678, blue: 0.3512129784, alpha: 1)
         }
     }
+    
+    static var searchBarBackground: UIColor {
+        get {
+            #colorLiteral(red: 0.0969536528, green: 0.09149926156, blue: 0.1706170738, alpha: 1)
+        }
+    }
 }

@@ -16,8 +16,16 @@ class SearchVC: UICollectionViewController {
     
     // MARK: - Constructors
     init() {
-        // TODO: Build compositional layout
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        // Build compositional layout
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
+            return SearchVC.createSearchBarSection()
+        }
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
+        
+        super.init(collectionViewLayout: layout)
     }
     
     required init?(coder: NSCoder) {
@@ -26,8 +34,10 @@ class SearchVC: UICollectionViewController {
     
     // MARK: - Cell & Header Registrations
     
-    // TODO: Register search cell
-    
+    // Register search cell
+    let searchBarCellRegistration = UICollectionView.CellRegistration<SearchBarCell, Any> { (_, _, _) in
+        // DO NOTHING
+    }
     
     // TODO: Register continue watching cell
     
@@ -44,6 +54,16 @@ class SearchVC: UICollectionViewController {
     
     // MARK: - Private Helpers
     
+    private static func createSearchBarSection() -> NSCollectionLayoutSection? {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        return section
+    }
+    
     // TODO: Compose continue watching section
 
 }
@@ -55,16 +75,18 @@ extension SearchVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return continueWatchingVideos.count
+        return 1
     }
-    
-    // TODO: Implement cellForItemAtIndexPath(collectionView:indexPath:)
+        
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueConfiguredReusableCell(using: searchBarCellRegistration, for: indexPath, item: nil)
+    }
 }
 
 extension SearchVC {
     
     enum Section: Int {
-        case SEARCH = 0
+        case SEARCH_BAR = 0
         case CONTINUE_WATCHING = 1
         case HISTORY = 2
     }
