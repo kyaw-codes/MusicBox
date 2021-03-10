@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct CommentModel {
+struct CommentModel: Hashable {
     
     var profileImage: UIImage
     var name: String

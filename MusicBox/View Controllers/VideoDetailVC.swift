@@ -12,8 +12,8 @@ class VideoDetailVC: UIViewController {
     
     private var comments = CommentModel.comments
     
-    private let collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         collectionView.backgroundColor = .appBackground
         collectionView.alwaysBounceVertical = true
         return collectionView
@@ -33,92 +33,35 @@ class VideoDetailVC: UIViewController {
         return btn
     }()
     
-    private lazy var topVideoView: UIView = {
-        let topView = UIView()
-        topView.backgroundColor = .yellow
-
-        let topViewHeight = view.frame.height / 2
-
-        // add background image
-        let bgIV = UIImageView(image: #imageLiteral(resourceName: "pic_1"))
-        bgIV.contentMode = .scaleAspectFill
-        bgIV.clipsToBounds = true
-        bgIV.backgroundColor = .green
-        
-        topView.addSubview(bgIV)
-        bgIV.snp.makeConstraints { (make) in
-            make.edges.equalTo(topView)
-        }
-        
-        // add gradient layer
-        let gradientHeight: CGFloat = topViewHeight / 2.4
-        let gradientLayerYOffset: CGFloat = topViewHeight - gradientHeight
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.appBackground.cgColor]
-        gradientLayer.locations = [0, 0.85]
-        topView.layer.addSublayer(gradientLayer)
-        gradientLayer.frame = CGRect(x: 0, y: gradientLayerYOffset, width: view.frame.width, height: gradientHeight)
-
-        // add play button
-        let playButton = UIButton()
-        let playIconConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48))
-        let playIcon = UIImage(systemName: "play.circle.fill", withConfiguration: playIconConfig)?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.appAccent.withAlphaComponent(0.8))
-        playButton.setImage(playIcon, for: .normal)
-        
-        topView.addSubview(playButton)
-        playButton.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalToSuperview()
-        }
-        
-        // add title lable
-        let titleLabel = UILabel()
-        titleLabel.font = .boldSystemFont(ofSize: 32)
-        titleLabel.text = "Midnight Theme Is \nBeautiful"
-        titleLabel.numberOfLines = 2
-        titleLabel.textColor = .white
-        
-        topView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.leading.trailing.equalTo(topView).inset(20)
-        }
-        
-        // add comment label
-        let commentLabel = UILabel()
-        commentLabel.font = UIFont.systemFont(ofSize: 16)
-        commentLabel.textColor = .systemGray
-        
-        let attrString = NSMutableAttributedString(string: "Comments  ")
-        attrString.append(NSMutableAttributedString(string: "4", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)]))
-        
-        commentLabel.attributedText = attrString
-
-        topView.addSubview(commentLabel)
-        commentLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-16)
-            make.leading.trailing.bottom.equalTo(topView).inset(20)
-        }
-        
-        // add bottom separator view
-        let bottomSeparatorView = UIView()
-        bottomSeparatorView.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
-        
-        topView.addSubview(bottomSeparatorView)
-        bottomSeparatorView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalTo(topView).inset(10)
-            make.bottom.equalTo(topView)
-            make.height.equalTo(1)
-        }
-        
-        return topView
+    private lazy var writeCommentView: UIView = {
+        let commentView = UIView()
+        // text field
+        // send button
+        return commentView
     }()
+
+    private lazy var topVideoView = VideoHeaderView()
     
+    private var datasource: UICollectionViewDiffableDataSource<Int, CommentModel>?
+    private var snapshot: NSDiffableDataSourceSnapshot<Int, CommentModel>?
+    
+    private let commentCellRegistration = UICollectionView.CellRegistration<CommentCell, CommentModel> { (cell, indexPath, comment) in
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpViews()
+        createDatasource()
+        applySnapshot()
+    }
+        
+    private func setUpViews() {
         view.addSubview(topVideoView)
         topVideoView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2)
+            make.height.equalTo(view.frame.height / 1.8)
         }
         
         view.addSubview(collectionView)
@@ -126,11 +69,41 @@ class VideoDetailVC: UIViewController {
             make.top.equalTo(topVideoView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-
+        
         view.addSubview(backButton)
         backButton.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
+        }
+    }
+    
+    private func createDatasource() {
+        datasource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let strongSelf = self else { return nil }
+            return collectionView.dequeueConfiguredReusableCell(using: strongSelf.commentCellRegistration, for: indexPath, item: item)
+        })
+    }
+    
+    private func applySnapshot() {
+        snapshot = NSDiffableDataSourceSnapshot()
+        snapshot?.appendSections([0])
+        snapshot?.appendItems(comments)
+        
+        datasource?.apply(snapshot!)
+    }
+    
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .none, top: .fixed(10), trailing: .none, bottom: .none) // to be figued out very soon
+
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+            return section
         }
     }
     
