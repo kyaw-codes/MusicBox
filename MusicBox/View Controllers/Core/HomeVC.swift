@@ -41,8 +41,15 @@ class HomeVC: UICollectionViewController {
 
     // MARK: - Cell & Header Registrations
     
-    lazy var videoSliderCellRegistration = UICollectionView.CellRegistration<VideoSliderCell, UIImage> { cell, indexPath, video in
+    lazy var videoSliderCellRegistration = UICollectionView.CellRegistration<VideoSliderCell, UIImage> { [weak self] cell, indexPath, video in
+        guard let strongSelf = self else { return }
         cell.video = video
+        cell.onVideoTap = {
+            let vc = VideoDetailVC()
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            strongSelf.present(vc, animated: true, completion: nil)
+        }
     }
     
     lazy var videoSliderHeaderRegistration = UICollectionView.SupplementaryRegistration<VideoSliderHeader>(elementKind: VideoSliderHeader.elementKind) { [weak self] (header, _, indexPath) in

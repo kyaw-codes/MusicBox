@@ -12,6 +12,8 @@ class VideoSliderCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    var onVideoTap: () -> Void = {}
+    
     var video: UIImage? {
         didSet {
             guard let image = video else { return }
@@ -44,6 +46,8 @@ class VideoSliderCell: UICollectionViewCell {
         
         addSubview(videoImageView)
         addSubview(playButton)
+
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleVideoTap)))
     }
     
     override func layoutSubviews() {
@@ -57,6 +61,11 @@ class VideoSliderCell: UICollectionViewCell {
             make.centerX.centerY.equalToSuperview()
             make.width.height.equalTo(48)
         }
+        
+    }
+    
+    @objc private func handleVideoTap() {
+        onVideoTap()
     }
     
     required init?(coder: NSCoder) {
