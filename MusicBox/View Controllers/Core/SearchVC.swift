@@ -21,6 +21,8 @@ class SearchVC: UICollectionViewController {
             switch sectionIndex {
             case Section.CONTINUE_WATCHING.rawValue:
                 return SearchVC.createContinueWatchingVideoSection()
+            case Section.HISTORY.rawValue:
+                return SearchVC.createHistorySection()
             default:
                 return SearchVC.createSearchBarSection()
             }
@@ -43,12 +45,12 @@ class SearchVC: UICollectionViewController {
         // DO NOTHING
     }
     
-    let continueWatchingCellRegistration = UICollectionView.CellRegistration<ContinueWatchingVideoCell, WatchedVideoModel> { (cell, indexPath, model) in
+    let continueWatchingCellRegistration = UICollectionView.CellRegistration<WatchedVideoCell, WatchedVideoModel> { (cell, indexPath, model) in
         cell.video = model
     }
     
-    let continueWatchingHeaderRegistration = UICollectionView.SupplementaryRegistration<ContinueWatchingHeader>(elementKind: ContinueWatchingHeader.elementKind) { (header, _, _) in
-        // DO NOTHING
+    let continueWatchingHeaderRegistration = UICollectionView.SupplementaryRegistration<SearchSectionHeader>(elementKind: SearchSectionHeader.elementKind) { (header, _, indexPath) in
+        header.headerName = indexPath.section == Section.CONTINUE_WATCHING.rawValue ? "Continue Watching" : "History"
     }
     
     // MARK: - Lifecycles
@@ -103,7 +105,27 @@ class SearchVC: UICollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
         
         section.boundarySupplementaryItems = [
-            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(45)), elementKind: ContinueWatchingHeader.elementKind, alignment: .top)
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(45)), elementKind: SearchSectionHeader.elementKind, alignment: .top)
+        ]
+        
+        return section
+    }
+    
+    // Compose continue watching section
+    private static func createHistorySection() -> NSCollectionLayoutSection? {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(160))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .estimated(160))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
+        
+        section.boundarySupplementaryItems = [
+            .init(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(45)), elementKind: SearchSectionHeader.elementKind, alignment: .top)
         ]
         
         return section
@@ -114,13 +136,15 @@ class SearchVC: UICollectionViewController {
 extension SearchVC {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case Section.CONTINUE_WATCHING.rawValue:
             return continueWatchingVideos.count
+        case Section.HISTORY.rawValue:
+            return watchedVideos.count
         default:
             return 1
         }
@@ -130,6 +154,9 @@ extension SearchVC {
         switch indexPath.section {
         case Section.CONTINUE_WATCHING.rawValue:
             let model = continueWatchingVideos[indexPath.item]
+            return collectionView.dequeueConfiguredReusableCell(using: continueWatchingCellRegistration, for: indexPath, item: model)
+        case Section.HISTORY.rawValue:
+            let model = watchedVideos[indexPath.item]
             return collectionView.dequeueConfiguredReusableCell(using: continueWatchingCellRegistration, for: indexPath, item: model)
         default:
             return collectionView.dequeueConfiguredReusableCell(using: searchBarCellRegistration, for: indexPath, item: nil)

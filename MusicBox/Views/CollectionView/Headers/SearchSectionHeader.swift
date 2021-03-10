@@ -8,11 +8,18 @@
 import UIKit
 import SnapKit
 
-class ContinueWatchingHeader: UICollectionReusableView {
+class SearchSectionHeader: UICollectionReusableView {
     
     static let elementKind = "ContinueWatchingHeaderKind"
     
-    private lazy var continueWatchingLabel: UILabel = {
+    var headerName: String? {
+        didSet {
+            guard let header = headerName else { return }
+            headerLabel.text = header
+        }
+    }
+    
+    private lazy var headerLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Continue Watching"
         lbl.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -37,11 +44,11 @@ class ContinueWatchingHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(continueWatchingLabel)
+        addSubview(headerLabel)
         addSubview(seeAllButton)
         addSubview(bottomSeparatorView)
         
-        continueWatchingLabel.snp.makeConstraints { (make) in
+        headerLabel.snp.makeConstraints { (make) in
             make.leading.top.bottom.equalToSuperview()
         }
 

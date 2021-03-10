@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContinueWatchingVideoCell: UICollectionViewCell {
+class WatchedVideoCell: UICollectionViewCell {
     
     var video: WatchedVideoModel? {
         didSet {
@@ -50,7 +50,7 @@ class ContinueWatchingVideoCell: UICollectionViewCell {
         imageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().inset(20)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(frame.width)
+            make.height.equalTo(frame.width * 0.95)
         }
         
         titleLabel.snp.makeConstraints { (make) in
