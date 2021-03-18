@@ -47,7 +47,7 @@ class HomeVC: UICollectionViewController {
         cell.onVideoTap = {
             let vc = VideoDetailVC()
             vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .flipHorizontal
+            vc.modalTransitionStyle = .coverVertical
             strongSelf.present(vc, animated: true, completion: nil)
         }
     }

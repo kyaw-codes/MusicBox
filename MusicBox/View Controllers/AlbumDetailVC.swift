@@ -58,6 +58,7 @@ class AlbumDetailVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .appBackground
     }
     

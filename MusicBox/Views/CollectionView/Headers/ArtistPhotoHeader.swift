@@ -67,11 +67,11 @@ class ArtistPhotoHeader : UICollectionReusableView {
         }
 
         // Add gradient layer
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.appBackground.withAlphaComponent(0.99).cgColor]
-        gradientLayer.locations = [0, 0.7]
-        artistImageView.layer.addSublayer(gradientLayer)
-        gradientLayer.frame = CGRect(x: 0, y: frame.maxY - (frame.height * 0.25), width: frame.width, height: frame.height * 0.25)
+        if artistImageView.layer.sublayers == nil {
+            artistImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground],
+                                          locations: [0, 0.6],
+                                          frame: CGRect(x: 0, y: frame.maxY - (frame.height * 0.15), width: frame.width, height: frame.height * 0.15))
+        }
         
         addSubview(artistNameLabel)
         artistNameLabel.snp.makeConstraints { (make) in

@@ -26,6 +26,9 @@
 		0288BAF125F7F3C400D0EB9C /* AlbumHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAF025F7F3C300D0EB9C /* AlbumHeader.swift */; };
 		0288BAF525F7F87500D0EB9C /* WatchedVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAF425F7F87500D0EB9C /* WatchedVideoModel.swift */; };
 		0288BAFA25F8825D00D0EB9C /* WatchedVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAF925F8825D00D0EB9C /* WatchedVideoCell.swift */; };
+		02ABC57825FA183A00917B85 /* WriteCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABC57725FA183A00917B85 /* WriteCommentView.swift */; };
+		02ABC57D25FA6CCF00917B85 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABC57C25FA6CCF00917B85 /* UIView+extension.swift */; };
+		02ABC58625FA731A00917B85 /* WriteCommentViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ABC58525FA731A00917B85 /* WriteCommentViewDelegate.swift */; };
 		02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */; };
 		02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */; };
 		02B8293825E8BA61009D1AF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B8293725E8BA61009D1AF7 /* Assets.xcassets */; };
@@ -67,6 +70,9 @@
 		0288BAF025F7F3C300D0EB9C /* AlbumHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumHeader.swift; sourceTree = "<group>"; };
 		0288BAF425F7F87500D0EB9C /* WatchedVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedVideoModel.swift; sourceTree = "<group>"; };
 		0288BAF925F8825D00D0EB9C /* WatchedVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedVideoCell.swift; sourceTree = "<group>"; };
+		02ABC57725FA183A00917B85 /* WriteCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCommentView.swift; sourceTree = "<group>"; };
+		02ABC57C25FA6CCF00917B85 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		02ABC58525FA731A00917B85 /* WriteCommentViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCommentViewDelegate.swift; sourceTree = "<group>"; };
 		02B8292E25E8BA5F009D1AF7 /* MusicBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				0213EC7825F927840070AAFF /* VideoHeader.swift */,
+				02ABC57725FA183A00917B85 /* WriteCommentView.swift */,
 				021DB93D25E9FF3A006227BA /* CollectionView */,
 			);
 			path = Views;
@@ -219,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				02B8295225E8BE2A009D1AF7 /* UIColor+extension.swift */,
+				02ABC57C25FA6CCF00917B85 /* UIView+extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -228,6 +236,7 @@
 			children = (
 				02B8293125E8BA5F009D1AF7 /* AppDelegate.swift */,
 				02B8293325E8BA60009D1AF7 /* SceneDelegate.swift */,
+				02ABC58525FA731A00917B85 /* WriteCommentViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				0288BAFA25F8825D00D0EB9C /* WatchedVideoCell.swift in Sources */,
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
 				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,
+				02ABC58625FA731A00917B85 /* WriteCommentViewDelegate.swift in Sources */,
 				0288BAF125F7F3C400D0EB9C /* AlbumHeader.swift in Sources */,
 				0213EC7925F927840070AAFF /* VideoHeader.swift in Sources */,
 				0213EC7625F90F480070AAFF /* CommentModel.swift in Sources */,
@@ -424,9 +434,11 @@
 				02B8296425E8C7B1009D1AF7 /* SearchVC.swift in Sources */,
 				02E19B6425EF4EEC00F15DE4 /* StoryModel.swift in Sources */,
 				0279279325ED05BC00A67B64 /* VideoSliderTitleModel.swift in Sources */,
+				02ABC57D25FA6CCF00917B85 /* UIView+extension.swift in Sources */,
 				02D6A26F25F1356E008E7417 /* StoryHeader.swift in Sources */,
 				02575B7B25EE938100DA0AA0 /* VideoSliderCell.swift in Sources */,
 				0251CC0625F2AB4F00970D3E /* AlbumDetailVC.swift in Sources */,
+				02ABC57825FA183A00917B85 /* WriteCommentView.swift in Sources */,
 				02D6A27225F13805008E7417 /* ForYouAlbumCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

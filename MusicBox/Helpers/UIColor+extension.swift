@@ -56,4 +56,10 @@ extension UIColor {
             #colorLiteral(red: 0.0969536528, green: 0.09149926156, blue: 0.1706170738, alpha: 1)
         }
     }
+    
+    static var commentBarBackground: UIColor {
+        get {
+            #colorLiteral(red: 0.132044822, green: 0.1274682283, blue: 0.2482391298, alpha: 1)
+        }
+    }
 }

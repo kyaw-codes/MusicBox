@@ -69,17 +69,11 @@ class VideoHeaderView: UIView {
             make.edges.equalToSuperview()
         }
         
-        // add gradient layer
-        let gradientHeight: CGFloat = frame.height / 2.4
-        let gradientLayerYOffset: CGFloat = frame.height - gradientHeight
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.appBackground.cgColor]
-        gradientLayer.locations = [0, 0.85]
-        gradientLayer.frame = CGRect(x: 0, y: gradientLayerYOffset, width: frame.width, height: gradientHeight)
-
         if backgroundImageView.layer.sublayers == nil {
             // Add gradient layer only when there's no sub layer
-            backgroundImageView.layer.addSublayer(gradientLayer)
+            let gradientHeight: CGFloat = frame.height / 2.4
+            let gradientLayerOffsetY: CGFloat = frame.height - gradientHeight
+            backgroundImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground], locations: [0, 0.85], frame: CGRect(x: 0, y: gradientLayerOffsetY, width: frame.width, height: gradientHeight))
         }
         
         playButton.snp.makeConstraints { (make) in

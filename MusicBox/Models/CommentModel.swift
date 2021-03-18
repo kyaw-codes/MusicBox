@@ -8,7 +8,8 @@
 import UIKit
 
 struct CommentModel: Hashable {
-    
+
+    let id = UUID()
     var profileImage: UIImage
     var name: String
     var commentDuration: String

@@ -9,4 +9,6 @@ target 'MusicBox' do
 pod 'SnapKit'
 pod 'ReadMoreTextView'
 pod "ExpandableLabel"
+pod 'EmojiPicker', '1.1'
+
 end
