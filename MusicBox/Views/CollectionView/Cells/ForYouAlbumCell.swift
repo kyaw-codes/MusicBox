@@ -10,6 +10,8 @@ import SnapKit
 
 class ForYouAlbumCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var onTap: ((AlbumModel) -> Void) = {_ in}
     
     var album: AlbumModel? {
@@ -27,6 +29,8 @@ class ForYouAlbumCell: UICollectionViewCell {
             likeCountLabel.text = String(album.likeCount)
         }
     }
+    
+    // MARK: - Views
     
     // Album image view
     private lazy var albumImageView: UIImageView = {
@@ -88,9 +92,22 @@ class ForYouAlbumCell: UICollectionViewCell {
         return view
     }()
     
+    // MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
+        setupView()
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    // MARK: - Private Helper
+    
+    private func setupView() {
         addSubview(albumImageView)
         addSubview(titleLabel)
         addSubview(dividerView)
@@ -98,12 +115,6 @@ class ForYouAlbumCell: UICollectionViewCell {
         addSubview(likeButton)
         addSubview(commentCountLabel)
         addSubview(commentButton)
-        
-        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         albumImageView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview().inset(10)
@@ -142,12 +153,11 @@ class ForYouAlbumCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Handler
+    
     @objc private func handleTap() {
         guard let album = album else { return }
         onTap(album)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
 }

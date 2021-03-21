@@ -10,14 +10,11 @@ import SnapKit
 
 class WriteCommentView: UIView {
     
+    // MARK: - Delegate
+    
     var delegate: WriteCommentViewDelegate?
     
-    // text view
-    private var textPlaceholderView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .commentBarBackground
-        return view
-    }()
+    // MARK: - Views
     
     lazy var commentTextField: UITextField = {
         let tf = UITextField()
@@ -28,6 +25,13 @@ class WriteCommentView: UIView {
         tf.autocapitalizationType = .none
         tf.backgroundColor = .clear
         return tf
+    }()
+
+    // text view
+    private var textPlaceholderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .commentBarBackground
+        return view
     }()
     
     // emoji picker image view
@@ -49,16 +53,20 @@ class WriteCommentView: UIView {
         return btn
     }()
     
-    // on send button click
- 
-    override init(frame: CGRect){
-        super.init(frame: frame)
-            
+    // MARK: - Lifecycles
+    
+    private func setupViews() {
         textPlaceholderView.addSubview(commentTextField)
         textPlaceholderView.addSubview(emojiPickerImageView)
         
         addSubview(textPlaceholderView)
         addSubview(sendButton)
+    }
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+            
+        setupViews()
     }
 
     override func layoutSubviews() {
@@ -97,6 +105,12 @@ class WriteCommentView: UIView {
         textPlaceholderView.clipsToBounds = true
     }
     
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    // MARK: - Handlers
+    
     @objc private func handleEmojiPickerTap() {
         delegate?.onEmojiPickerTap()
     }
@@ -105,7 +119,4 @@ class WriteCommentView: UIView {
         delegate?.onSendButtonTap()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
 }

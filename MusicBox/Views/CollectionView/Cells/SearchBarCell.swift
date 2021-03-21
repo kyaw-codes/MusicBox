@@ -10,6 +10,8 @@ import SnapKit
 
 class SearchBarCell: UICollectionViewCell {
     
+    // MARK: - View
+    
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Artists, songs, albums..."
@@ -22,6 +24,8 @@ class SearchBarCell: UICollectionViewCell {
         searchBar.clipsToBounds = true
         return searchBar
     }()
+    
+    // MARK: - Lifecycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)

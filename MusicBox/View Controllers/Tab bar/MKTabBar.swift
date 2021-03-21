@@ -62,7 +62,7 @@ class MKTabBar: UIView {
         var tabContentPlaceholderViews = [UIView]()
         
         // Calculate the x offsets for each tab item
-        calculateOffsetForEachTabItem(&xOffsets)
+        calculateOffsetForEachTabItem()
         
         // Partition placeholder views for tab bar item to fit in
         partitionPlaceholderViews(&tabContentPlaceholderViews)
@@ -110,7 +110,7 @@ class MKTabBar: UIView {
     
     // MARK: - Private Helpers
 
-    fileprivate func calculateOffsetForEachTabItem(_ xOffsets: inout [CGFloat]) {
+    fileprivate func calculateOffsetForEachTabItem() {
         for i in 0..<tabItemData.count {
             let unitWidth = (frame.width - 24) / CGFloat(tabItemData.count)
             xOffsets.append((CGFloat(i) * unitWidth) + 12)

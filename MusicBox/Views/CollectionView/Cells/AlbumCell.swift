@@ -10,6 +10,8 @@ import SnapKit
 
 class AlbumCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var album: AlbumModel? {
         didSet {
             guard let album = album else { return }
@@ -18,6 +20,8 @@ class AlbumCell: UICollectionViewCell {
             albumInfoLabel.text = "\(album.releaseYear) - \(album.numberOfTracks) Tracks"
         }
     }
+    
+    // MARK: - Views
     
     private lazy var albumCoverImageView: UIImageView = {
         let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width / 4, height: frame.width / 4))
@@ -43,13 +47,25 @@ class AlbumCell: UICollectionViewCell {
         return lbl
     }()
     
+    // MARK: - Lifecycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
             
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    // MARK: - Private Helpers
+    
+    private func setupViews() {
         let innerSV = UIStackView(arrangedSubviews: [albumTitleLabel, albumInfoLabel, UIView()])
         innerSV.axis = .vertical
         innerSV.spacing = 10
-
+        
         albumCoverImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
         
         let outerSV = UIStackView(arrangedSubviews: [albumCoverImageView, innerSV])
@@ -62,7 +78,4 @@ class AlbumCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
 }

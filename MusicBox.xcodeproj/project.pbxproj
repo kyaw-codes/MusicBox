@@ -18,7 +18,6 @@
 		0251CC0925F2AB9B00970D3E /* VideoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0825F2AB9B00970D3E /* VideoDetailVC.swift */; };
 		0251CC0C25F2AEFC00970D3E /* ArtistBioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */; };
 		02575B7B25EE938100DA0AA0 /* VideoSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02575B7A25EE938100DA0AA0 /* VideoSliderCell.swift */; };
-		026701C425F4F9CC00C22A36 /* DeleteMeLaterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026701C325F4F9CC00C22A36 /* DeleteMeLaterVC.swift */; };
 		0279279325ED05BC00A67B64 /* VideoSliderTitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */; };
 		027927AF25ED3F1E00A67B64 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027927AE25ED3F1E00A67B64 /* StoryCell.swift */; };
 		0288BAD825F646A400D0EB9C /* ArtistPhotoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288BAD725F646A400D0EB9C /* ArtistPhotoHeader.swift */; };
@@ -62,7 +61,6 @@
 		0251CC0825F2AB9B00970D3E /* VideoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailVC.swift; sourceTree = "<group>"; };
 		0251CC0B25F2AEFC00970D3E /* ArtistBioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistBioCell.swift; sourceTree = "<group>"; };
 		02575B7A25EE938100DA0AA0 /* VideoSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderCell.swift; sourceTree = "<group>"; };
-		026701C325F4F9CC00C22A36 /* DeleteMeLaterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMeLaterVC.swift; sourceTree = "<group>"; };
 		0279279225ED05BC00A67B64 /* VideoSliderTitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderTitleModel.swift; sourceTree = "<group>"; };
 		027927AE25ED3F1E00A67B64 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		0288BAD725F646A400D0EB9C /* ArtistPhotoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPhotoHeader.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				02B8297125E94409009D1AF7 /* Tab bar */,
 				0251CC0525F2AB4F00970D3E /* AlbumDetailVC.swift */,
 				0251CC0825F2AB9B00970D3E /* VideoDetailVC.swift */,
-				026701C325F4F9CC00C22A36 /* DeleteMeLaterVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -427,7 +424,6 @@
 				02B8293425E8BA60009D1AF7 /* SceneDelegate.swift in Sources */,
 				02D6A27525F1381C008E7417 /* AlbumModel.swift in Sources */,
 				02E19B6125EEAD5D00F15DE4 /* VideoSliderHeader.swift in Sources */,
-				026701C425F4F9CC00C22A36 /* DeleteMeLaterVC.swift in Sources */,
 				02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */,
 				0288BAD825F646A400D0EB9C /* ArtistPhotoHeader.swift in Sources */,
 				02B8295325E8BE2A009D1AF7 /* UIColor+extension.swift in Sources */,

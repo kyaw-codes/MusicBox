@@ -10,7 +10,11 @@ import SnapKit
 
 class AlbumHeader: UICollectionReusableView {
     
+    // MARK: - Property
+    
     static let elementKind = "AlbumHeaderKind"
+    
+    // MARK: - Views
     
     private lazy var albumsLabel: UILabel = {
         let lbl = UILabel()
@@ -25,6 +29,8 @@ class AlbumHeader: UICollectionReusableView {
         view.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
         return view
     }()
+    
+    // MARK: - Lifecycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)

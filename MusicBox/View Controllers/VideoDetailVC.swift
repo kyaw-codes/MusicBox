@@ -11,8 +11,14 @@ import EmojiPicker
 
 class VideoDetailVC: UIViewController {
     
+    // MARK: - Private Properties
+    
     private var comments = CommentModel.comments
     private var commentViewBottomConstraint: Constraint?
+    private var datasource: UICollectionViewDiffableDataSource<Int, CommentModel>?
+    private var snapshot: NSDiffableDataSourceSnapshot<Int, CommentModel>?
+
+    // MARK: - Views
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
@@ -38,9 +44,8 @@ class VideoDetailVC: UIViewController {
     private lazy var writeCommentView = WriteCommentView()
 
     private lazy var topVideoView = VideoHeaderView()
-    
-    private var datasource: UICollectionViewDiffableDataSource<Int, CommentModel>?
-    private var snapshot: NSDiffableDataSourceSnapshot<Int, CommentModel>?
+        
+    // MARK: - Cell Registration
     
     private lazy var commentCellRegistration = UICollectionView.CellRegistration<CommentCell, CommentModel> { (cell, indexPath, comment) in
         cell.comment = comment
@@ -48,6 +53,8 @@ class VideoDetailVC: UIViewController {
             reactedCell.likeButton.tintColor = reactedCell.likeButton.tintColor == UIColor.appAccent ? UIColor.appRed : UIColor.appAccent
         }
     }
+    
+    // MARK: - Lifecycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +62,21 @@ class VideoDetailVC: UIViewController {
         view.backgroundColor = .appBackground
         
         writeCommentView.delegate = self
-
         setUpViews()
+        
         createDatasource()
         applySnapshot()
             
+        watchKeyboardNotification()
+    }
+    
+    // MARK: - Private Helper Methods
+        
+    private func watchKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-        
+
     private func setUpViews() {
         view.addSubview(topVideoView)
         topVideoView.snp.makeConstraints { (make) in
@@ -123,6 +136,8 @@ class VideoDetailVC: UIViewController {
         }
     }
     
+    // MARK: - Target-Action Handlers
+    
     @objc private func handleBackButtonClick() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -134,24 +149,21 @@ class VideoDetailVC: UIViewController {
         let keyboardHeight = keyboardRect!.height - view.safeAreaInsets.bottom
         let bottomInset = isKeyboardShowing ? keyboardHeight : 0
         
+        // Update comment text field position based on keyboard show/hide
         commentViewBottomConstraint?.update(inset: bottomInset)
         
         let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as? NSNumber)?.doubleValue
         
         UIView.animate(withDuration: animationDuration ?? 0) {
             self.view.layoutIfNeeded()
-        }
-        
-        UIView.animate(withDuration: animationDuration ?? 0) {
-            self.view.layoutIfNeeded()
         } completion: { (_) in
-            let lastCommentIndexPath = IndexPath(item: self.comments.count - 1, section: 0)
-            self.collectionView.scrollToItem(at: lastCommentIndexPath, at: .bottom, animated: true)
+            let newestCommentIndexPath = IndexPath(item: self.comments.count - 1, section: 0)
+            self.collectionView.scrollToItem(at: newestCommentIndexPath, at: .bottom, animated: true)
         }
 
     }
     
-    // Dismiss the keyboard when tap anywhere outside of the targeted frame i.e the write comment view
+    // Dismiss the keyboard when tap anywhere outside of the targeted frame(write comment view)
     @objc private func handleTapOutside() {
         writeCommentView.commentTextField.endEditing(true)
     }
@@ -159,6 +171,8 @@ class VideoDetailVC: UIViewController {
 }
 
 extension VideoDetailVC : WriteCommentViewDelegate {
+
+    // MARK: - WriteCommentView Delegate
 
     func onEmojiPickerTap() {
         let emojiPickerVC = EmojiPicker.viewController
@@ -192,6 +206,8 @@ extension VideoDetailVC : WriteCommentViewDelegate {
 
 extension VideoDetailVC : EmojiPickerViewControllerDelegate {
     
+    // MARK: - EmojiPicker Delegate
+
     func emojiPickerViewController(_ controller: EmojiPickerViewController, didSelect emoji: String) {
         writeCommentView.commentTextField.text?.append(emoji)
     }

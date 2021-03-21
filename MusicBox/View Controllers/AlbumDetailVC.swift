@@ -58,11 +58,15 @@ class AlbumDetailVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = .appBackground
+        setupCollectionView()
     }
     
     // MARK: - Private Helper Methods
+    
+    private func setupCollectionView() {
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor = .appBackground
+    }
     
     private static func createArtistBioSection() -> NSCollectionLayoutSection? {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))

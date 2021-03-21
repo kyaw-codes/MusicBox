@@ -10,6 +10,8 @@ import SnapKit
 
 class StoryCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var story: StoryModel? {
         didSet {
             guard let story = story else { return }
@@ -35,6 +37,8 @@ class StoryCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Views
+    
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.borderColor = UIColor.appRed.cgColor
@@ -58,25 +62,12 @@ class StoryCell: UICollectionViewCell {
         return lbl
     }()
     
+    // MARK: - Lifecycles
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(profileImageView)
-        addSubview(nameLabel)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        profileImageView.snp.makeConstraints { (make) in
-            make.centerX.top.equalToSuperview()
-        }
-        
-        nameLabel.snp.makeConstraints { (make) in
-            make.leading.trailing.equalTo(profileImageView)
-            make.bottom.equalToSuperview()
-            make.top.equalTo(profileImageView.snp.bottom).inset(-4)
-        }
+        setupViews()
     }
     
     override func prepareForReuse() {
@@ -88,4 +79,21 @@ class StoryCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    // MARK: - Private Helper
+    
+    private func setupViews() {
+        addSubview(profileImageView)
+        profileImageView.snp.makeConstraints { (make) in
+            make.centerX.top.equalToSuperview()
+        }
+        
+        addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) in
+            make.leading.trailing.equalTo(profileImageView)
+            make.bottom.equalToSuperview()
+            make.top.equalTo(profileImageView.snp.bottom).inset(-4)
+        }
+    }
+    
 }

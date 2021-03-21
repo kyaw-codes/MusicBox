@@ -10,6 +10,8 @@ import SnapKit
 
 class SearchSectionHeader: UICollectionReusableView {
     
+    // MARK: - Properties
+    
     static let elementKind = "ContinueWatchingHeaderKind"
     
     var headerName: String? {
@@ -18,6 +20,8 @@ class SearchSectionHeader: UICollectionReusableView {
             headerLabel.text = header
         }
     }
+    
+    // MARK: - Views
     
     private lazy var headerLabel: UILabel = {
         let lbl = UILabel()
@@ -40,6 +44,8 @@ class SearchSectionHeader: UICollectionReusableView {
         view.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
         return view
     }()
+    
+    // MARK: - Lifecycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)

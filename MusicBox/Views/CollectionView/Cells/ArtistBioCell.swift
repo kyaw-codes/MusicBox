@@ -11,6 +11,8 @@ import ReadMoreTextView
 
 class ArtistBioCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var bioText: String? {
         didSet {
             guard let bioText = bioText else { return }
@@ -19,6 +21,8 @@ class ArtistBioCell: UICollectionViewCell {
         }
     }
 
+    // MARK: - Views
+    
     private lazy var bioTextView: ReadMoreTextView = {
         let textView = ReadMoreTextView()
         textView.shouldTrim = true
@@ -42,6 +46,8 @@ class ArtistBioCell: UICollectionViewCell {
         textView.isUserInteractionEnabled = false
         return textView
     }()
+    
+    // MARK: - Lifecycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)

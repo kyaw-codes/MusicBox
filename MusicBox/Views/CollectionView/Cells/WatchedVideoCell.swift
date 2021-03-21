@@ -9,6 +9,8 @@ import UIKit
 
 class WatchedVideoCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var video: WatchedVideoModel? {
         didSet {
             guard let video = video else { return }
@@ -17,6 +19,8 @@ class WatchedVideoCell: UICollectionViewCell {
             viewerLabel.text = "\(video.viewerCounts) Views"
         }
     }
+    
+    // MARK: - Views
     
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
@@ -40,13 +44,25 @@ class WatchedVideoCell: UICollectionViewCell {
         return lbl
     }()
     
+    // MARK: - Lifecycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupViews(frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+
+    // MARK: - Helper
+    
+    private func setupViews(_ frame: CGRect) {
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(viewerLabel)
-
+        
         imageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().inset(20)
             make.leading.trailing.equalToSuperview()
@@ -57,7 +73,7 @@ class WatchedVideoCell: UICollectionViewCell {
             make.top.equalTo(imageView.snp.bottom).inset(-18)
             make.leading.trailing.equalTo(imageView)
         }
-
+        
         viewerLabel.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(imageView)
             make.top.equalTo(titleLabel.snp.bottom).inset(-8)
@@ -65,7 +81,4 @@ class WatchedVideoCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
 }

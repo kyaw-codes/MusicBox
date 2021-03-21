@@ -10,6 +10,8 @@ import SnapKit
 
 class VideoHeaderView: UIView {
     
+    // MARK: - Views
+    
     private lazy var backgroundImageView: UIImageView = {
         let bgIV = UIImageView(image: UIImage(named: "pic_1"))
         bgIV.contentMode = .scaleAspectFill
@@ -52,6 +54,8 @@ class VideoHeaderView: UIView {
         return bottomSeparatorView
     }()
     
+    // MARK: - Lifecycle Methods
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,9 +75,7 @@ class VideoHeaderView: UIView {
         
         if backgroundImageView.layer.sublayers == nil {
             // Add gradient layer only when there's no sub layer
-            let gradientHeight: CGFloat = frame.height / 2.4
-            let gradientLayerOffsetY: CGFloat = frame.height - gradientHeight
-            backgroundImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground], locations: [0, 0.85], frame: CGRect(x: 0, y: gradientLayerOffsetY, width: frame.width, height: gradientHeight))
+            addGradientLayer()
         }
         
         playButton.snp.makeConstraints { (make) in
@@ -95,6 +97,12 @@ class VideoHeaderView: UIView {
             make.height.equalTo(1)
         }
         
+    }
+    
+    private func addGradientLayer() {
+        let gradientHeight: CGFloat = frame.height / 2.4
+        let gradientLayerOffsetY: CGFloat = frame.height - gradientHeight
+        backgroundImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground], locations: [0, 0.85], frame: CGRect(x: 0, y: gradientLayerOffsetY, width: frame.width, height: gradientHeight))
     }
     
     required init?(coder: NSCoder) {

@@ -124,7 +124,7 @@ class HomeVC: UICollectionViewController {
     
     // MARK: - Private Helper Methods
     
-    fileprivate func configureCollectionView() {
+    private func configureCollectionView() {
         collectionView.backgroundColor = .appBackground
         collectionView.alwaysBounceVertical = true
     }

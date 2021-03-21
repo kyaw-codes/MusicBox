@@ -10,6 +10,8 @@ import SnapKit
 
 class MKTabBarController: UITabBarController {
     
+    // MARK: - Properties
+    
     private let tabItems: [MKTabItemData] = MKTabItemData.allCases
     private lazy var mkViewControllers: [UIViewController] = tabItems.map { $0.viewController }
     var tabBarHeight = 80
@@ -17,13 +19,19 @@ class MKTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewControllers = mkViewControllers
+        configureDefaultTabBar()
+        setUpMKTabBar()
+    }
+
+    private func configureDefaultTabBar() {
         object_setClass(tabBar, OverridedTabBar.self)
         tabBar.isUserInteractionEnabled = false
         tabBar.alpha = 0
-        
+    }
+    
+    private func setUpMKTabBar() {
         let mkTabBar = MKTabBar(items: tabItems)
-        viewControllers = mkViewControllers
-        
         
         mkTabBar.onTabItemTap = { [weak self] index in
             guard let strongSelf = self else { return }
@@ -35,7 +43,6 @@ class MKTabBarController: UITabBarController {
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(tabBarHeight)
         }
-
     }
 }
 

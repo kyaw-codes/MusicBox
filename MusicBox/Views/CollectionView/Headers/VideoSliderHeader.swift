@@ -147,10 +147,13 @@ extension VideoSliderHeader {
         override init(frame: CGRect) {
             super.init(frame: frame)
             
-            addSubview(titleLabel)
-            addSubview(bottomUnderlineView)
+            setUpViews()
             
             contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError()
         }
         
         override func layoutSubviews() {
@@ -166,10 +169,13 @@ extension VideoSliderHeader {
             }
         }
         
-        required init?(coder: NSCoder) {
-            fatalError()
-        }
+        // MARK: - Private Helper
 
+        private func setUpViews() {
+            addSubview(titleLabel)
+            addSubview(bottomUnderlineView)
+        }
+        
         // MARK: - Handler Methods
         
         @objc func handleTap() {

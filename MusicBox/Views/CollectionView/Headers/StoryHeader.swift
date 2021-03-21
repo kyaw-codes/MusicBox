@@ -6,11 +6,14 @@
 //
 
 import UIKit
-import SwiftUI
 
 class StoryHeader: UICollectionReusableView {
     
+    // MARK: - Property
+    
     static let elementKind = "StoryHeaderKind"
+    
+    // MARK: - View
     
     private lazy var titleLable: UILabel = {
         let lbl = UILabel()
@@ -19,6 +22,8 @@ class StoryHeader: UICollectionReusableView {
         lbl.textColor = .appAccent
         return lbl
     }()
+    
+    // MARK: - Lifecycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)

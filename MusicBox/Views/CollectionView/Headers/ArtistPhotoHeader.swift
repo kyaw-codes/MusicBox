@@ -10,6 +10,8 @@ import SnapKit
 
 class ArtistPhotoHeader : UICollectionReusableView {
     
+    // MARK: - Properties
+    
     static let elementKind = "ArtistPhotoHeaderKind"
     
     var artistImage: UIImage? {
@@ -25,6 +27,8 @@ class ArtistPhotoHeader : UICollectionReusableView {
             artistNameLabel.text = name
         }
     }
+    
+    // MARK: - Views
     
     private lazy var artistImageView: UIImageView = {
         let iv = UIImageView()
@@ -55,23 +59,28 @@ class ArtistPhotoHeader : UICollectionReusableView {
         return btn
     }()
     
+    
+    // MARK: - Lifecycle Methods
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .red
+                
+        setUpViews(frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    // MARK: - Private Helpers
+
+    private func setUpViews(_ frame: CGRect) {
         
         addSubview(artistImageView)
-
         artistImageView.snp.makeConstraints { (make) in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
-
-        // Add gradient layer
-        if artistImageView.layer.sublayers == nil {
-            artistImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground],
-                                          locations: [0, 0.6],
-                                          frame: CGRect(x: 0, y: frame.maxY - (frame.height * 0.15), width: frame.width, height: frame.height * 0.15))
-        }
+        addGradientLayerToImage(frame)
         
         addSubview(artistNameLabel)
         artistNameLabel.snp.makeConstraints { (make) in
@@ -88,7 +97,12 @@ class ArtistPhotoHeader : UICollectionReusableView {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError()
+    private func addGradientLayerToImage(_ frame: CGRect) {
+        // Add gradient layer
+        if artistImageView.layer.sublayers == nil {
+            artistImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground],
+                                          locations: [0, 0.6],
+                                          frame: CGRect(x: 0, y: frame.maxY - (frame.height * 0.15), width: frame.width, height: frame.height * 0.15))
+        }
     }
 }

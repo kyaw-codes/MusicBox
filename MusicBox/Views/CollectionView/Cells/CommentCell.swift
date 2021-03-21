@@ -10,6 +10,8 @@ import SnapKit
 
 class CommentCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     var onCommentReacted: ((CommentCell) -> Void)!
     
     var comment: CommentModel? {
@@ -22,6 +24,16 @@ class CommentCell: UICollectionViewCell {
             likeButton.tintColor = comment.isReacted ? .appRed : .appAccent
         }
     }
+    
+    // MARK: - Views
+    
+    lazy var likeButton: UIButton = {
+        let btn = UIButton()
+        let iconConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 18))
+        let heartIcon = UIImage(systemName: "heart.fill", withConfiguration: iconConfig)?.withRenderingMode(.alwaysTemplate)
+        btn.setImage(heartIcon, for: .normal)
+        return btn
+    }()
     
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
@@ -58,36 +70,41 @@ class CommentCell: UICollectionViewCell {
         return lbl
     }()
     
-    lazy var likeButton: UIButton = {
-        let btn = UIButton()
-        let iconConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 18))
-        let heartIcon = UIImage(systemName: "heart.fill", withConfiguration: iconConfig)?.withRenderingMode(.alwaysTemplate)
-        btn.setImage(heartIcon, for: .normal)
-        return btn
-    }()
-    
     private lazy var dividerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
         return view
     }()
     
+    // MARK: - Lifecycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupViews()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    // MARK: - Private Helper
+    
+    private func setupViews() {
         addSubview(profileImageView)
         addSubview(likeButton)
         addSubview(usernameLabel)
         addSubview(commentDurationLabel)
         addSubview(commentTextLabel)
         addSubview(dividerView)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
         likeButton.addTarget(self, action: #selector(handleCommentReaction), for: .touchUpInside)
-
+        
         profileImageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().inset(5)
             make.leading.equalToSuperview()
@@ -124,13 +141,7 @@ class CommentCell: UICollectionViewCell {
         }
     }
     
-    override func prepareForReuse() {
-        comment?.isReacted = false
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
+    // MARK: - Handler
     
     @objc func handleCommentReaction() {
         onCommentReacted(self)

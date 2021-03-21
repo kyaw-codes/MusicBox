@@ -40,29 +40,31 @@ class VideoSliderCell: UICollectionViewCell {
     }()
     
     // MARK: - Constructors & Lifecycles
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(videoImageView)
-        addSubview(playButton)
+        setupViews()
 
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleVideoTap)))
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    // MARK: - Private Helpers
+    
+    private func setupViews() {
+        addSubview(videoImageView)
         videoImageView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         
+        addSubview(playButton)
         playButton.snp.makeConstraints { (make) in
             make.centerX.centerY.equalToSuperview()
             make.width.height.equalTo(48)
         }
-        
     }
+    
+    // MARK: - Target-Action Handlers
     
     @objc private func handleVideoTap() {
         onVideoTap()
