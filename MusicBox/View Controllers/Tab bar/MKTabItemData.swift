@@ -55,7 +55,9 @@ enum MKTabItemData: CaseIterable {
             case .addNew:
                 return AddNewVC()
             case .notification:
-                return NotificationVC()
+                let notiVC = UINavigationController(rootViewController: NotificationVC())
+                notiVC.navigationBar.prefersLargeTitles = true
+                return notiVC
             case .profile:
                 return ProfileVC()
             default:
