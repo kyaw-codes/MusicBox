@@ -76,7 +76,7 @@ class WatchedVideoCell: UICollectionViewCell {
         
         viewerLabel.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(imageView)
-            make.top.equalTo(titleLabel.snp.bottom).inset(-8)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-4)
             make.bottom.equalToSuperview()
         }
     }
