@@ -8,60 +8,6 @@
 import UIKit
 import SwiftUI
 
-struct NotificationModel: Hashable {
-    
-    let id = UUID()
-    var name: String
-    var profileImage: UIImage
-    var time: String
-    var type: NotificationType
-    
-    static var notifications: [NotificationModel] = [
-        .init(name: "Tyson Marlo", profileImage: UIImage(named: "pic_1")!, time: "2h", type: .like),
-        .init(name: "Joan Silverlake", profileImage: UIImage(named: "pic_3")!, time: "2h", type: .follow),
-        .init(name: "Joan Silverlake", profileImage: UIImage(named: "pic_3")!, time: "2h", type: .reply),
-        .init(name: "Tyson Marlo", profileImage: UIImage(named: "pic_1")!, time: "3h", type: .like)
-    ]
-    
-    enum NotificationType {
-        case like
-        case follow
-        case reply
-        
-        var notificationText: String {
-            switch self {
-            case .like:
-                return "liked to your song."
-            case .follow:
-                return "started following you!"
-            default:
-                return "replied to your comment."
-            }
-        }
-    }
-}
-
-class NotificationCell : UICollectionViewCell {
-    
-    // MARK: - Properties
-    var notification: NotificationModel? {
-        didSet {
-            // TODO: Implement Later
-        }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .red
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
 class NotificationVC: UIViewController {
     
     // MARK: - Properties
@@ -75,6 +21,7 @@ class NotificationVC: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.alwaysBounceVertical = true
         return collectionView
     }()
     
@@ -119,6 +66,8 @@ class NotificationVC: UIViewController {
     private func setupNavigationBar() {
         title = "Notifications"
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.barTintColor = .clear
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu")?.withTintColor(.appGray), style: .plain, target: nil, action: nil)
     }
     
@@ -130,8 +79,12 @@ extension NotificationVC : UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width - 2 * padding, height: 80)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+        return UIEdgeInsets(top: padding, left: padding, bottom: 0, right: padding)
     }
 }
 

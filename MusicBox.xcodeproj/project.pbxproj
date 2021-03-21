@@ -40,6 +40,8 @@
 		02B8296725E8C7B7009D1AF7 /* AddNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */; };
 		02B8296A25E8C7C0009D1AF7 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */; };
 		02B8296D25E8C7C7009D1AF7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */; };
+		02C2474F260759C3005443E6 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2474E260759C3005443E6 /* NotificationCell.swift */; };
+		02C24752260759E8005443E6 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C24751260759E8005443E6 /* NotificationModel.swift */; };
 		02D6A26F25F1356E008E7417 /* StoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A26E25F1356E008E7417 /* StoryHeader.swift */; };
 		02D6A27225F13805008E7417 /* ForYouAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */; };
 		02D6A27525F1381C008E7417 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6A27425F1381C008E7417 /* AlbumModel.swift */; };
@@ -85,6 +87,8 @@
 		02B8296625E8C7B7009D1AF7 /* AddNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVC.swift; sourceTree = "<group>"; };
 		02B8296925E8C7C0009D1AF7 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		02B8296C25E8C7C7009D1AF7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		02C2474E260759C3005443E6 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		02C24751260759E8005443E6 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		02D6A26E25F1356E008E7417 /* StoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryHeader.swift; sourceTree = "<group>"; };
 		02D6A27125F13805008E7417 /* ForYouAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouAlbumCell.swift; sourceTree = "<group>"; };
 		02D6A27425F1381C008E7417 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				0213EC6725F884E90070AAFF /* SearchBarCell.swift */,
 				0288BAF925F8825D00D0EB9C /* WatchedVideoCell.swift */,
 				0210D06B25F93E9D00555700 /* CommentCell.swift */,
+				02C2474E260759C3005443E6 /* NotificationCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				02D6A27425F1381C008E7417 /* AlbumModel.swift */,
 				0288BAF425F7F87500D0EB9C /* WatchedVideoModel.swift */,
 				0213EC7525F90F480070AAFF /* CommentModel.swift */,
+				02C24751260759E8005443E6 /* NotificationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				02B8293225E8BA5F009D1AF7 /* AppDelegate.swift in Sources */,
 				02B8296025E8C5F7009D1AF7 /* MKTabBarController.swift in Sources */,
 				02ABC58625FA731A00917B85 /* WriteCommentViewDelegate.swift in Sources */,
+				02C24752260759E8005443E6 /* NotificationModel.swift in Sources */,
 				0288BAF125F7F3C400D0EB9C /* AlbumHeader.swift in Sources */,
 				0213EC7925F927840070AAFF /* VideoHeader.swift in Sources */,
 				0213EC7625F90F480070AAFF /* CommentModel.swift in Sources */,
@@ -434,6 +441,7 @@
 				02D6A26F25F1356E008E7417 /* StoryHeader.swift in Sources */,
 				02575B7B25EE938100DA0AA0 /* VideoSliderCell.swift in Sources */,
 				0251CC0625F2AB4F00970D3E /* AlbumDetailVC.swift in Sources */,
+				02C2474F260759C3005443E6 /* NotificationCell.swift in Sources */,
 				02ABC57825FA183A00917B85 /* WriteCommentView.swift in Sources */,
 				02D6A27225F13805008E7417 /* ForYouAlbumCell.swift in Sources */,
 			);
