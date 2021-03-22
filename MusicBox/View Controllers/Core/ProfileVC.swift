@@ -10,10 +10,12 @@ import SnapKit
 
 class ProfileHeadingCell: UICollectionViewCell {
     
+    var editButtonGradient: CAGradientLayer?
+    
     // MARK: - Views
     private lazy var backgroundImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "pic_3")
+        iv.image = UIImage(named: "cv")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
@@ -29,7 +31,7 @@ class ProfileHeadingCell: UICollectionViewCell {
     
     private lazy var bioLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Experience singer, loves oriental drammatic dancing and can't live without playing guitar 🎸"
+        lbl.text = "Experience singer 👩🏻‍🎤, loves oriental drammatic dancing and can't live without playing piano 🎹"
         lbl.textColor = .appAccent
         lbl.font = .systemFont(ofSize: 16)
         lbl.numberOfLines = 2
@@ -43,14 +45,19 @@ class ProfileHeadingCell: UICollectionViewCell {
         button.setImage(icon, for: .normal)
         button.setTitle(" Edit Profile", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .appRed
+        editButtonGradient = button.applyGradient(colours: [.appPurple, .appRed], locations: [0, 0.5])
+        editButtonGradient?.startPoint = CGPoint(x: 0, y: 0)
+        editButtonGradient?.endPoint = CGPoint(x: 1, y: 0)
+        button.bringSubviewToFront(button.imageView!)
         return button
     }()
     
     // MARK: - Lifecycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
             
+        backgroundColor = .clear
         setupViews()
     }
     
@@ -61,13 +68,13 @@ class ProfileHeadingCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .clear
+        setupViews()
         
         if backgroundImageView.layer.sublayers == nil {
             applyGradientToBackgroundImage()
         }
         
-//        editButton.applyGradient(colours: [UIColor.appPurple, UIColor.appRed], locations: [0, 0.5])
+        editButtonGradient?.frame = editButton.bounds
     }
     
     // MARK: - Private Helpers
@@ -75,7 +82,7 @@ class ProfileHeadingCell: UICollectionViewCell {
     private func applyGradientToBackgroundImage() {
         // add gradient
         let gradientHeight = backgroundImageView.frame.height * 0.3
-        backgroundImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground], locations: [0, 0.8], frame: CGRect(x: 0, y: backgroundImageView.frame.height - gradientHeight, width: self.frame.width, height: gradientHeight))
+        backgroundImageView.applyGradient(colours: [UIColor.clear, UIColor.appBackground], locations: [0, 0.8], frame: CGRect(x: 0, y: backgroundImageView.frame.height - gradientHeight, width: backgroundImageView.frame.width, height: gradientHeight))
     }
 
     private func setupViews() {
@@ -98,10 +105,10 @@ class ProfileHeadingCell: UICollectionViewCell {
         bioLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(profileLabel)
             make.trailing.equalToSuperview().inset(24)
-            make.top.equalTo(profileLabel.snp.bottom).inset(-4)
+            make.top.equalTo(profileLabel.snp.bottom).inset(-12)
         }
         
-        // follow button
+        // edit button
         addSubview(editButton)
         editButton.snp.makeConstraints { (make) in
             make.leading.equalTo(profileLabel)
@@ -116,6 +123,15 @@ class ProfileHeadingCell: UICollectionViewCell {
 
 class ProfileVC: UICollectionViewController {
     
+    // MARK: - View
+    private lazy var settingButton: UIButton = {
+        let btn = UIButton()
+        let iconConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20))
+        let settingIcon = UIImage(systemName: "gearshape.fill", withConfiguration: iconConfig)?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor.white.withAlphaComponent(0.8))
+        btn.setImage(settingIcon, for: .normal)
+        return btn
+    }()
+    
     // MARK: - Cell Registrations
     private let headingCellRegistration = UICollectionView.CellRegistration<ProfileHeadingCell, String> { (cell, _, _) in
         // NO ACTION
@@ -126,12 +142,30 @@ class ProfileVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.isHidden = true
+        
+        configureCollectionView()
+        setupViews()
+    }
+    
+    // MARK: - Private Helpers
+    
+    private func configureCollectionView() {
+        // Make the cell inset to cover the status bar
         let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
         collectionView.contentInset.top = -(window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
-
-        navigationController?.navigationBar.isHidden = true
+        
         collectionView.backgroundColor = .appBackground
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    }
+    
+    private func setupViews() {
+        // add setting button
+        view.addSubview(settingButton)
+        settingButton.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            make.trailing.equalToSuperview().inset(24)
+        }
     }
     
 }
@@ -159,7 +193,7 @@ extension ProfileVC: UICollectionViewDelegateFlowLayout {
     // MARK: - Delegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 2.5)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 2.2)
     }
 }
 
