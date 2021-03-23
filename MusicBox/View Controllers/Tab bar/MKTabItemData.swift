@@ -59,7 +59,7 @@ enum MKTabItemData: CaseIterable {
                 notiVC.navigationBar.prefersLargeTitles = true
                 return notiVC
             case .profile:
-                let profileVC = UINavigationController(rootViewController: ProfileVC(collectionViewLayout: UICollectionViewFlowLayout()))
+                let profileVC = UINavigationController(rootViewController: ProfileVC())
                 return profileVC
             default:
                 let homeVC = UINavigationController(rootViewController: HomeVC())
