@@ -22,6 +22,7 @@ class SearchBarCell: UICollectionViewCell {
         searchBar.searchTextField.font = .systemFont(ofSize: 18, weight: .semibold)
         searchBar.layer.cornerRadius = frame.height / 2
         searchBar.clipsToBounds = true
+        searchBar.searchTextField.keyboardAppearance = .dark
         return searchBar
     }()
     

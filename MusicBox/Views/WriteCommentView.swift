@@ -24,6 +24,7 @@ class WriteCommentView: UIView {
         tf.autocorrectionType = .no
         tf.autocapitalizationType = .none
         tf.backgroundColor = .clear
+        tf.keyboardAppearance = .dark
         return tf
     }()
 
