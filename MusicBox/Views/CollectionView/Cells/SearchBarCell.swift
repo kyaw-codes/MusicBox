@@ -12,7 +12,7 @@ class SearchBarCell: UICollectionViewCell {
     
     // MARK: - View
     
-    private lazy var searchBar: UISearchBar = {
+    lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Artists, songs, albums..."
         searchBar.searchTextField.backgroundColor = .clear

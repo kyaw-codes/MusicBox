@@ -73,9 +73,9 @@ class HomeVC: UICollectionViewController {
 
             albumDetailVC.album = model
             albumDetailVC.otherAlbums = [
-                .init(coverImage: UIImage(named: "album_2")!, artistImage: UIImage(named: "pic_3")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_2")!, artistImage: UIImage(named: "pic_3")!, title: "This Title Is Short", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20, isDownloaded: true),
                 .init(coverImage: UIImage(named: "album_3")!, artistImage: UIImage(named: "pic_4")!, title: "This Title Might Take Up A Maximum of Two Lines...", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
-                .init(coverImage: UIImage(named: "album_4")!, artistImage: UIImage(named: "pic_5")!, title: "This Might Look Awesome!", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
+                .init(coverImage: UIImage(named: "album_1")!, artistImage: UIImage(named: "pic_5")!, title: "This Might Look Awesome!", artistName: "", artistBio: "", releaseYear: "2021", numberOfTracks: 12, commentCount: 12, likeCount: 20),
             ]
             
             self?.present(albumDetailVC, animated: true, completion: nil)

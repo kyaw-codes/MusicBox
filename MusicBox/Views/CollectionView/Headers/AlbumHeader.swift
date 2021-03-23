@@ -16,7 +16,7 @@ class AlbumHeader: UICollectionReusableView {
     
     // MARK: - Views
     
-    private lazy var albumsLabel: UILabel = {
+    lazy var albumsLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Albums"
         lbl.textColor = .white
@@ -24,7 +24,7 @@ class AlbumHeader: UICollectionReusableView {
         return lbl
     }()
     
-    private lazy var dividerView: UIView = {
+    lazy var dividerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
         return view

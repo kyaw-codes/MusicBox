@@ -23,6 +23,7 @@ class ProfileStatisticCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .appTabBackground
         setupViews()
     }
     
@@ -35,7 +36,7 @@ class ProfileStatisticCell: UICollectionViewCell {
     private func setupViews() {
         let reputationStat = buildStatsCol(title: "8/10", subtitle: "Reputation")
         let followerStat = buildStatsCol(title: "1,943", subtitle: "Followers")
-        let albumStat = buildStatsCol(title: "4", subtitle: "Albums")
+        let albumStat = buildStatsCol(title: "8", subtitle: "Albums")
         
         let statisticRow = buildStatsRow(statViews: [reputationStat, followerStat, albumStat])
         addSubview(statisticRow)
@@ -69,7 +70,7 @@ class ProfileStatisticCell: UICollectionViewCell {
         let subtitleLabel = UILabel()
         subtitleLabel.text = subtitle
         subtitleLabel.font = .boldSystemFont(ofSize: 16)
-        subtitleLabel.textColor = .appGray
+        subtitleLabel.textColor = .systemGray
         
         let sv = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         sv.axis = .vertical

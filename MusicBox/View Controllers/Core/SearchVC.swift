@@ -13,6 +13,7 @@ class SearchVC: UICollectionViewController {
     
     private let continueWatchingVideos = WatchedVideoModel.continueWatchingVideos
     private let watchedVideos = WatchedVideoModel.watchedVideos
+    private var searchBar: UISearchBar?
     
     // MARK: - Constructors
     init() {
@@ -41,8 +42,8 @@ class SearchVC: UICollectionViewController {
     
     // MARK: - Cell & Header Registrations
     
-    let searchBarCellRegistration = UICollectionView.CellRegistration<SearchBarCell, Any> { (_, _, _) in
-        // DO NOTHING
+    lazy var searchBarCellRegistration = UICollectionView.CellRegistration<SearchBarCell, Any> { (cell, _, _) in
+        self.searchBar = cell.searchBar
     }
     
     let continueWatchingCellRegistration = UICollectionView.CellRegistration<WatchedVideoCell, WatchedVideoModel> { (cell, indexPath, model) in
@@ -58,6 +59,7 @@ class SearchVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleViewTap)))
         configureNavigationBar()
         
         collectionView.backgroundColor = .appBackground
@@ -129,6 +131,11 @@ class SearchVC: UICollectionViewController {
         ]
         
         return section
+    }
+    
+    // MARK: - Handler
+    @objc private func handleViewTap() {
+        searchBar?.searchTextField.endEditing(true)
     }
     
 }

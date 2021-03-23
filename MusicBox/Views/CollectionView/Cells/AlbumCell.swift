@@ -18,13 +18,23 @@ class AlbumCell: UICollectionViewCell {
             albumCoverImageView.image = album.coverImage
             albumTitleLabel.text = album.title
             albumInfoLabel.text = "\(album.releaseYear) - \(album.numberOfTracks) Tracks"
+            
+            // Setting download button icon based on data
+            let iconConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20))
+            let iconName = album.isDownloaded ? "icloud.and.arrow.down.fill" : "square.and.arrow.down"
+            
+            let downloadIcon = UIImage(systemName: iconName, withConfiguration: iconConfig)?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(album.isDownloaded ? .appAccent : .white)
+            
+            downloadButton.setImage(downloadIcon, for: .normal)
         }
     }
     
     // MARK: - Views
     
     private lazy var albumCoverImageView: UIImageView = {
-        let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width / 4, height: frame.width / 4))
+        let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = 12
         iv.layer.masksToBounds = true
@@ -47,6 +57,18 @@ class AlbumCell: UICollectionViewCell {
         return lbl
     }()
     
+    lazy var bottomSeparatorView: UIView = {
+        let bottomSeparatorView = UIView()
+        bottomSeparatorView.backgroundColor = UIColor.appAccent.withAlphaComponent(0.2)
+        return bottomSeparatorView
+    }()
+    
+    lazy var downloadButton: UIButton = {
+        let btn = UIButton()
+//        btn.backgroundColor = .red
+        return btn
+    }()
+    
     // MARK: - Lifecycles
     
     override init(frame: CGRect) {
@@ -62,19 +84,45 @@ class AlbumCell: UICollectionViewCell {
     // MARK: - Private Helpers
     
     private func setupViews() {
+        // The vertical stack of title + subtitle
         let innerSV = UIStackView(arrangedSubviews: [albumTitleLabel, albumInfoLabel, UIView()])
         innerSV.axis = .vertical
         innerSV.spacing = 10
         
-        albumCoverImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
+        // Specify width and height for image
+        albumCoverImageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(frame.height)
+        }
         
-        let outerSV = UIStackView(arrangedSubviews: [albumCoverImageView, innerSV])
+        // Specify width and height for download button
+        downloadButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(30)
+        }
+        
+        // Put button inside stack view so that it will position as I wish
+        let btnSV = UIStackView(arrangedSubviews: [downloadButton, UIView()])
+        btnSV.axis = .vertical
+        
+        // This is the final stack view for our layout!
+        let outerSV = UIStackView(arrangedSubviews: [albumCoverImageView, innerSV, btnSV])
         outerSV.spacing = 14
         
         addSubview(outerSV)
         
         outerSV.snp.makeConstraints { (make) in
             make.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
+        setupBottomSeparatorView(innerSV)
+    }
+    
+    private func setupBottomSeparatorView(_ innerSV: UIStackView) {
+        addSubview(bottomSeparatorView)
+        bottomSeparatorView.snp.makeConstraints { (make) in
+            make.leading.equalTo(innerSV)
+            make.trailing.equalTo(downloadButton)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
         }
     }
     

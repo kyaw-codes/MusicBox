@@ -18,8 +18,9 @@ class AlbumModel {
     var numberOfTracks: Int
     var commentCount: Int
     var likeCount: Int
+    var isDownloaded: Bool
     
-    init(coverImage: UIImage, artistImage: UIImage, title: String, artistName: String, artistBio: String, releaseYear: String, numberOfTracks: Int, commentCount: Int, likeCount: Int) {
+    init(coverImage: UIImage, artistImage: UIImage, title: String, artistName: String, artistBio: String, releaseYear: String, numberOfTracks: Int, commentCount: Int, likeCount: Int, isDownloaded: Bool = false) {
         self.coverImage = coverImage
         self.artistImage = artistImage
         self.title = title
@@ -29,5 +30,6 @@ class AlbumModel {
         self.numberOfTracks = numberOfTracks
         self.commentCount = commentCount
         self.likeCount = likeCount
+        self.isDownloaded = isDownloaded
     }
 }
