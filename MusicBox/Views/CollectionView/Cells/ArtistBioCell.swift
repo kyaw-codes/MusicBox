@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import ReadMoreTextView
 
 class ArtistBioCell: UICollectionViewCell {
     
@@ -15,29 +14,13 @@ class ArtistBioCell: UICollectionViewCell {
     
     var bioText: String? {
         didSet {
-            guard let bioText = bioText else { return }
-            bioTextView.attributedText = NSAttributedString(string: bioText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor : UIColor.white])
-            dummyTextView.text = bioText
+            bioTextView.text = bioText
         }
     }
 
     // MARK: - Views
     
-    private lazy var bioTextView: ReadMoreTextView = {
-        let textView = ReadMoreTextView()
-        textView.shouldTrim = true
-        textView.maximumNumberOfLines = 3
-        
-        textView.attributedReadMoreText = NSAttributedString(string: "Show More", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.appRed])
-        
-        textView.attributedReadLessText = NSAttributedString(string: "Show Less", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.appAccent])
-        
-        textView.backgroundColor = .appBackground
-
-        return textView
-    }()
-    
-    private lazy var dummyTextView: UITextView = {
+    private lazy var bioTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.textColor = .white
@@ -52,8 +35,8 @@ class ArtistBioCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(dummyTextView)
-        dummyTextView.snp.makeConstraints { (make) in
+        contentView.addSubview(bioTextView)
+        bioTextView.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalToSuperview().inset(12)
         }
