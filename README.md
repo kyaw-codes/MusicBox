@@ -1,3 +1,5 @@
+<h1 align="center">MusicBox 🎶</h1>
+
 <p align="center"><img src="https://user-images.githubusercontent.com/59503767/112310456-01bbb900-8cd3-11eb-9585-92a07a4a5a5a.png" width="1705" alt="MusicBox Logo"/><p>
 
 <p align="center">
@@ -7,8 +9,6 @@
         <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" />
     </a>
 </p>
-
-# MusicBox 🎶
 
 ![musicbox](https://user-images.githubusercontent.com/59503767/112260508-7291af80-8c98-11eb-8f88-29911c1c93d1.jpg)
 
