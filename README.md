@@ -1,6 +1,14 @@
-# MusicBox 🎶
+<p align="center"><img src="https://user-images.githubusercontent.com/59503767/112284591-cb247500-8cb7-11eb-9984-c8a2c7390a5e.png" width="150" height="150" alt="MusicBox Logo"/><p>
 
-![Maintainer](https://img.shields.io/badge/ios-13.0+-blue)  ![Maintenance](https://img.shields.io/badge/Swift-5.1-green.svg)  [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/kyaw-codes/MusicBox/blob/master/LICENSE)
+<p align="center">
+    <img src="https://img.shields.io/badge/ios-13.0+-blue.svg" />
+    <img src="https://img.shields.io/badge/Swift-5.1-brightgreen.svg" />
+    <a href="https://github.com/kyaw-codes/MusicBox/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" />
+    </a>
+</p>
+
+# MusicBox 🎶
 
 ![musicbox](https://user-images.githubusercontent.com/59503767/112260508-7291af80-8c98-11eb-8f88-29911c1c93d1.jpg)
 
