@@ -1,4 +1,4 @@
-<p align="center"><img src="https://user-images.githubusercontent.com/59503767/112284591-cb247500-8cb7-11eb-9984-c8a2c7390a5e.png" width="150" height="150" alt="MusicBox Logo"/><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/59503767/112310456-01bbb900-8cd3-11eb-9585-92a07a4a5a5a.png" width="600" alt="MusicBox Logo"/><p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/ios-13.0+-blue.svg" />
